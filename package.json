@@ -1,0 +1,24 @@
+{
+  "name": "js-typographizer",
+  "version": "0.0.0",
+  "description": "A script to fix typographic errors",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovlb/typographizer-js.git"
+  },
+  "keywords": [
+    "typography",
+    "text-formatting",
+    "design"
+  ],
+  "author": "Oscar Braunert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ovlb/typographizer-js/issues"
+  },
+  "homepage": "https://github.com/ovlb/typographizer-js#readme"
+}
