@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ovlb/typographizer-js#readme",
   "devDependencies": {
+    "@babel/register": "^7.0.0",
     "ava": "^1.2.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.13.0",
