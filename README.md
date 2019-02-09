@@ -1,5 +1,13 @@
 # TypographizerJS
 
+<!-- Shortcode definitions at the of the file -->
+
+[![Code Coverage][codecov-img]][codecov-url]
+[![Build Status][travis-img]][travis-url]
+[![Dependency Status][depstat-image]][depstat-url]
+[![Dev Dependency Status][devdepstat-image]][devdepstat-url]
+
+
 Typographizer automates ~~everything~~ some things you don’t want (or need) to know about typography.
 
 ---
@@ -124,3 +132,16 @@ Supported languages are:
 | Swedish | sw |
 
 This list is missing Japanese and Hebrew, which are supported by Typographizer. Hebrew is missing due to complicated support. Japanese requires extended Unicode checks.
+
+<!-- Badges shortcodes -->
+[codecov-url]: https://codecov.io/gh/ovlb/typographizer-js
+[codecov-img]: https://codecov.io/gh/ovlb/typographizer-js/branch/master/graph/badge.svg
+
+[travis-url]: https://travis-ci.org/ovlb/typographizer-js
+[travis-img]: https://travis-ci.org/ovlb/typographizer-js.svg?branch=master
+
+[depstat-url]: https://david-dm.org/ovlb/typographizer-js
+[depstat-image]: https://img.shields.io/david/ovlb/typographizer-js/master.svg
+
+[devdepstat-url]: https://david-dm.org/ovlb/typographizer-js#info=devDependencies
+[devdepstat-image]: https://img.shields.io/david/dev/ovlb/typographizer-js/master.svg
