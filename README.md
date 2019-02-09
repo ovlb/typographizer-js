@@ -1,6 +1,6 @@
-# typographizer-js
+# TypographizerJS
 
-Take your unformatted text and turn it into something that makes your typographer friends happy.
+Typographizer automates ~~everything~~ some things you don’t want (or need) to know about typography.
 
 ---
 
