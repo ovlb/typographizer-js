@@ -17,7 +17,7 @@ import supportedLanguages from './data/supportedLanguages'
 export default class TypographizerJS {
   constructor (options) {
     if (options && !supportedLanguages.includes(options.language)) {
-      return new Error('Language in options is not supported.')
+      return new Error('Language in `options` is not supported.')
     }
 
     const defaultOptions = {
