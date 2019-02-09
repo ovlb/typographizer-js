@@ -27,9 +27,6 @@ test.skip('Quotes - Remove `"` at end of string.', (t) => {
   t.false(replaced.slice(-1) === '"')
 })
 
-// The accent aigu is a diacritical sign and should, in western languages, not stand on its own
-test('Remove ´', (t) => {
-  t.false(replaced.includes('´'))
 })
 
 test('replaceOpeningQuotes does not fix apostrophes', async (t) => {
