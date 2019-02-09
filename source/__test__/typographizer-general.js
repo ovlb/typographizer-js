@@ -1,5 +1,5 @@
 import test from 'ava'
-import TypographizerJS from '../'
+import TypographizerJS from '..'
 
 import exampleEn from './__samples__/en'
 
@@ -20,8 +20,6 @@ test('🔧 – Default language is en', (t) => {
 test('🔧 – Can set language', (t) => {
   const TypographizerDE = new TypographizerJS({ language: 'de_DE' })
   const { language } = TypographizerDE.options
-
-  console.log(TypographizerDE.options)
 
   t.is(language, 'de_DE')
 })
