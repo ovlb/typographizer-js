@@ -8,7 +8,7 @@ let replaced
 
 test.beforeEach(async (t) => {
   Typographizer = new TypographizerJS()
-  replaced = await Typographizer.typographize(exampleEn)
+  replaced = await Typographizer.formatQuotes(exampleEn)
 })
 
 test('Remove ` "`', (t) => {
