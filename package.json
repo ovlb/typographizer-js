@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "test": "ava",
-    "test:coverage": "nyc ava && nyc report --reporter=text-lcov > coverage.lcov"
+    "test:coverage": "nyc ava",
+    "test:report": "npm run test:coverage && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "repository": {
     "type": "git",
