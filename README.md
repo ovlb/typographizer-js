@@ -123,4 +123,4 @@ Supported languages are:
 | Slovenian | sl |
 | Swedish | sw |
 
-This list is missing Japanese and Hebrew, which are supported by Typographizer. Hebrew is missing due to complicated support and Japanese will be added once I can confirm that TypographizerJS does not break its formatting.
+This list is missing Japanese and Hebrew, which are supported by Typographizer. Hebrew is missing due to complicated support. Japanese requires extended Unicode checks.
