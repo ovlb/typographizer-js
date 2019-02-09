@@ -1,5 +1,5 @@
 export default {
-  sources: [
+  files: [
     'test/**/*.spec.js'
   ],
   require: [
