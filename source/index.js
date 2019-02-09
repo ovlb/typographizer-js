@@ -69,6 +69,15 @@ export default class TypographizerJS {
     return str.replace(find, (found) => found.replace(apo, '’'))
   }
 
+  /**
+   * Trim whitespace from beginning and end of string and replace multiple spaces
+   * inside of a string with a single one.
+   *
+   * @param {String} str
+   * @async
+   * @returns {Promise<String>}
+   * @memberof TypographizerJS
+   */
   async trimWhitespace (str) {
     return str.trim().replace(/\u0020{2,}/gmiu, ' ')
   }
