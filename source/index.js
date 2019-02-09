@@ -9,6 +9,8 @@
  *
  * @export
  * @class TypographizerJS
+ * @author Oscar Braunert
+ * @license MIT
  */
 export default class TypographizerJS {
   constructor (options) {
