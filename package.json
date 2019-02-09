@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "test": "ava",
-    "test:coverage": "nyc ava"
+    "test:coverage": "nyc ava --reporter=lcov"
   },
   "repository": {
     "type": "git",
