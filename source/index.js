@@ -1,3 +1,5 @@
+import supportedLanguages from './data/supportedLanguages'
+
 /**
  * Typographizer. Your friendly helper to correct common typographic mistakes.
  *
@@ -14,6 +16,10 @@
  */
 export default class TypographizerJS {
   constructor (options) {
+    if (options && !supportedLanguages.includes(options.language)) {
+      return new Error('Language in options is not supported.')
+    }
+
     const defaultOptions = {
       isHTML: false,
       language: 'en'

@@ -18,10 +18,18 @@ test('🔧 – Default language is en', (t) => {
 })
 
 test('🔧 – Can set language', (t) => {
-  const TypographizerDE = new TypographizerJS({ language: 'de_DE' })
+  const TypographizerDE = new TypographizerJS({ language: 'de' })
   const { language } = TypographizerDE.options
 
-  t.is(language, 'de_DE')
+  t.is(language, 'de')
+})
+
+test('🔧 – Returns an error if an unsupported language is set', (t) => {
+  const TypographizerNoSupport = new TypographizerJS({
+    language: 'css'
+  })
+
+  t.true(TypographizerNoSupport instanceof Error)
 })
 
 test('🔧 – Remove ` "`', (t) => {

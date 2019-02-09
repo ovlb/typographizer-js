@@ -1,0 +1,22 @@
+export default [
+  'bs',
+  'cz',
+  'da',
+  'nl',
+  'en',
+  'es',
+  'fi',
+  'fr',
+  'de',
+  'de_CH',
+  'de_LI',
+  'hu',
+  'is',
+  'lt',
+  'lv',
+  'pl',
+  'ro',
+  'sk',
+  'sl',
+  'sw'
+]
