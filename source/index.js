@@ -85,7 +85,7 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async trimWhitespace (str) {
-    return str.trim().replace(/\u0020{2,}/gmiu, ' ')
+    return str.trim().replace(/\u0020{2,}/gmiu, /\u0020/)
   }
 
   /**
