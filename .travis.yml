@@ -1,8 +1,12 @@
 language: node_js
 node_js:
  - "10"
-script: "npm run-script test:coverage"
+install:
+  - npm install -g codecov
+script:
+  - npm run-script test:coverage
+  - codecov
 cache: npm
 # Send coverage data to Coveralls
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash)
