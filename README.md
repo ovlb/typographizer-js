@@ -1,6 +1,6 @@
 # TypographizerJS
 
-<!-- Shortcode definitions at the of the file -->
+<!-- Shortcode definitions at the bottom of the file -->
 
 [![Code Coverage][codecov-img]][codecov-url]
 [![Build Status][travis-img]][travis-url]
