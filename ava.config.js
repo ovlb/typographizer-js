@@ -1,7 +1,6 @@
 export default {
-  files: [
-    '**/__test__/*',
-    '!**/__samples__/*'
+  sources: [
+    'test/**/*.spec.js'
   ],
   require: [
     'esm'
