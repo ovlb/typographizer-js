@@ -8,8 +8,8 @@
     "build": "rollup -c --environment BUILD:production",
     "test": "ava",
     "test:watch": "ava --watch",
-    "test:coverage": "nyc ava",
-    "test:report": "npm run test:coverage && nyc report --reporter=text-lcov > coverage.lcov"
+    "test:coverage": "nyc ava --reporter=text-lcov",
+    "test:report": "nyc ava && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "repository": {
     "type": "git",
