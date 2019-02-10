@@ -16,9 +16,7 @@ Typographizer automates ~~everything~~ some things you don’t want (or need) to
 
 ## Acknowledgement
 
-The JS version is inspired by the [Typographizer](https://github.com/frankrausch/Typographizer) by [Frank Rausch](https://frankrausch.com/ "Homepage of Frank Rausch"), written in Swift.
-
-🙇‍
+The JS version is inspired by the [Typographizer](https://github.com/frankrausch/Typographizer) by [Frank Rausch](https://frankrausch.com/ "Homepage of Frank Rausch"), written in Swift. 🙇‍
 
 
 ## Usage
