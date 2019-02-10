@@ -96,18 +96,18 @@ To avoid side effects and confusion, It is **not** possible to change these opti
 
 ## API
 
-While the
+All these methods return Promises. Usage instructions for the `typographize` apply.
 
 ### Methods
 
 | Method | Description |
 | --- | --- |
-| typographize(str) | Takes a string and applies all optimizations |
+| fixApostroph(str) | Replace ', ´ and ` used as an apostroph
 | formatQuotes(str) | Format quotes, but not whitespace or apostrophes
 | formatOpeningQuotes(str) | Format all opening quotes
 | formatClosingQuotes(str) | Format all closing quotes
-| fixApostroph(str) | Replace ', ´ and ` used as an apostroph
 | trimWhitespace(str) | Remove whitespace from the beginning and end of a string, replaces multiple spaces with a single one
+| typographize(str) | Takes a string and applies all optimizations |
 
 ## Supported languages
 
