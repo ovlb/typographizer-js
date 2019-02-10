@@ -103,6 +103,7 @@ All these methods return Promises. Usage instructions for `typographize` usage a
 | Method | Description |
 | --- | --- |
 | fixApostroph(str) | Replace ', ´ and ` used as an apostroph
+| fixEllipsis(str) | Formats all occurences of ... to use the correct … character
 | formatQuotes(str) | Format quotes, but not whitespace or apostrophes
 | formatOpeningQuotes(str) | Format all opening quotes
 | formatClosingQuotes(str) | Format all closing quotes
