@@ -63,7 +63,7 @@ export default class TypographizerJS {
    *
    * @param {String} str
    * @async
-   * @returns {Promise<String>} str with all occurences of wrong apostrophes replaces
+   * @returns {Promise<String>} str with all occurences of wrong apostrophes replaced
    * @memberof TypographizerJS
    */
   async fixApostroph (str) {
