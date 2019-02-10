@@ -18,7 +18,16 @@ The JS version is inspired by the [Typographizer](https://github.com/frankrausch
 
 🙇‍
 
-## Installation
+
+## Usage
+
+### Here be dragons 🐉
+
+You should not use this in the browser (probably). Formatting and reinserting long strings is a mayor performance hit.
+
+In general, this is more of a fun project. So, use with caution.
+
+### Installation
 
 ```bash
 npm install typographizer-js
@@ -30,12 +39,10 @@ If you are using Yarn:
 yarn add typographizer-js
 ```
 
-## Usage
-
 Import the bundle into your project:
 
 ```js
-import TypographizerJS from 'typographizer-js'
+const TypographizerJS = require('typographizer-js')
 ```
 
 And crate a new instance:
@@ -44,7 +51,7 @@ And crate a new instance:
 const Typographizer = new TypographizerJS()
 ```
 
-Note: Typographizer will preserve inline HTML Tags (a, strong, em), but should not be used to format large bunches of source code.
+<!-- Note: Typographizer will preserve inline HTML Tags (a, strong, em), but should not be used to format large bunches of source code. -->
 
 Once you have your Typographizer available you can format strings using the `typographize()` method.
 
@@ -89,18 +96,18 @@ To avoid side effects and confusion, It is **not** possible to change these opti
 
 ## API
 
-While the
+All these methods return Promises. Usage instructions for the `typographize` apply.
 
 ### Methods
 
 | Method | Description |
 | --- | --- |
-| typographize(str) | Takes a string and applies all optimizations |
+| fixApostroph(str) | Replace ', ´ and ` used as an apostroph
 | formatQuotes(str) | Format quotes, but not whitespace or apostrophes
 | formatOpeningQuotes(str) | Format all opening quotes
 | formatClosingQuotes(str) | Format all closing quotes
-| fixApostroph(str) | Replace ', ´ and ` used as an apostroph
 | trimWhitespace(str) | Remove whitespace from the beginning and end of a string, replaces multiple spaces with a single one
+| typographize(str) | Takes a string and applies all optimizations |
 
 ## Supported languages
 
