@@ -33,8 +33,6 @@ export default class TypographizerJS {
     }
 
     this.options = { ...defaultOptions, ...options }
-
-    this.string = undefined
   }
 
   /**
@@ -48,14 +46,9 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async typographize (string) {
-    this.string = string
-
-    string = string.trim()
-
-    return this.replaceOpeningQuotes(string)
+    return this.trimWhitespace(string)
+      .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
-
-    // return string
   }
 
   /**
@@ -63,7 +56,7 @@ export default class TypographizerJS {
    *
    * @param {String} str
    * @async
-   * @returns {Promise<String>} str with all occurences of wrong apostrophes replaces
+   * @returns {Promise<String>} str with all occurences of wrong apostrophes replaced
    * @memberof TypographizerJS
    */
   async fixApostroph (str) {
@@ -85,18 +78,30 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async trimWhitespace (str) {
-    return str.trim().replace(/\u0020{2,}/gmiu, /\u0020/)
+    return str.trim().replace(/\u0020{2,}/gmiu, ' ')
   }
 
   /**
-   * Replace all occurences of straight opening quotes (" and ')
+   * Format opening and closing quotes
+   *
+   * @param {String}
+   * @async
+   * @returns {Promise<String>}
+   * @memberof TypographizerJS
+   */
+  async formatQuotes (str) {
+    return this.formatOpeningQuotes(str).then((str) => this.formatClosingQuotes(str))
+  }
+
+  /**
+   * format all occurences of straight opening quotes (" and ')
    *
    * @param {String} str
    * @async
    * @returns {Promise<String>} The formatted string
    * @memberof TypographizerJS
    */
-  async replaceOpeningQuotes (str) {
+  async formatOpeningQuotes (str) {
     // Match all " that are followed by any letter from the Basic Latin to Greek Extended character sets
     // The characters between \u02af and \u0370 are Combining Diacrital Marks
     // To allow for nested quotes we also check for single quotes
@@ -109,5 +114,16 @@ export default class TypographizerJS {
     return str
       .replace(openingDoubleQuotes, openingDouble)
       .replace(openingSingleQuotes, (found) => found.replace(`'`, openingSingle))
+  }
+
+  async formatClosingQuotes (str) {
+    const closingDoubleQuote = /"(?=[\s,.])|("$)/gimu
+    const closingSingleQuote = /'(?=[\s,."”«»])/gimu
+
+    const { closingDouble, closingSingle } = this.quotes
+
+    return str
+      .replace(closingDoubleQuote, closingDouble)
+      .replace(closingSingleQuote, closingSingle)
   }
 }
