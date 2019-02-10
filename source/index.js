@@ -89,14 +89,26 @@ export default class TypographizerJS {
   }
 
   /**
-   * Replace all occurences of straight opening quotes (" and ')
+   * Format opening and closing quotes
+   *
+   * @param {String}
+   * @async
+   * @returns {Promise<String>}
+   * @memberof TypographizerJS
+   */
+  async formatQuotes (str) {
+    return this.formatOpeningQuotes(str).then((str) => this.formatClosingQuotes(str))
+  }
+
+  /**
+   * format all occurences of straight opening quotes (" and ')
    *
    * @param {String} str
    * @async
    * @returns {Promise<String>} The formatted string
    * @memberof TypographizerJS
    */
-  async replaceOpeningQuotes (str) {
+  async formatOpeningQuotes (str) {
     // Match all " that are followed by any letter from the Basic Latin to Greek Extended character sets
     // The characters between \u02af and \u0370 are Combining Diacrital Marks
     // To allow for nested quotes we also check for single quotes
@@ -109,5 +121,16 @@ export default class TypographizerJS {
     return str
       .replace(openingDoubleQuotes, openingDouble)
       .replace(openingSingleQuotes, (found) => found.replace(`'`, openingSingle))
+  }
+
+  async formatClosingQuotes (str) {
+    const closingDoubleQuote = /"(?=[\s,.])|("$)/gimu
+    const closingSingleQuote = /'(?=[\s,."”«»])/gimu
+
+    const { closingDouble, closingSingle } = this.quotes
+
+    return str
+      .replace(closingDoubleQuote, closingDouble)
+      .replace(closingSingleQuote, closingSingle)
   }
 }
