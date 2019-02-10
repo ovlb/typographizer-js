@@ -49,6 +49,7 @@ export default class TypographizerJS {
     return this.trimWhitespace(string)
       .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
+      .then((str) => this.fixEllipsis(str))
   }
 
   /**
@@ -66,6 +67,18 @@ export default class TypographizerJS {
     const apo = /['´`]/gimu
 
     return str.replace(find, (found) => found.replace(apo, '’'))
+  }
+
+  /**
+   * Formats all occurences of ... to use the correct … character
+   *
+   * @param {String} str String to test
+   * @async
+   * @returns {Promise<String>}
+   * @memberof TypographizerJS
+   */
+  async fixEllipsis (str) {
+    return str.replace(/(\.{3})/gmiu, '…')
   }
 
   /**
@@ -116,6 +129,14 @@ export default class TypographizerJS {
       .replace(openingSingleQuotes, (found) => found.replace(`'`, openingSingle))
   }
 
+  /**
+   *Check for all closing straight quotes
+   *
+   * @param {String} str
+   * @async
+   * @returns {Promise<String>}
+   * @memberof TypographizerJS
+   */
   async formatClosingQuotes (str) {
     const closingDoubleQuote = /"(?=[\s,.])|("$)/gimu
     const closingSingleQuote = /'(?=[\s,."”«»])/gimu
