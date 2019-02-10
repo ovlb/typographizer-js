@@ -49,6 +49,7 @@ export default class TypographizerJS {
     return this.trimWhitespace(string)
       .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
+      .then((str) => this.fixEllipsis(str))
   }
 
   /**
