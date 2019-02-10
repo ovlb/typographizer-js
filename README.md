@@ -1,5 +1,7 @@
 # TypographizerJS
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ovlb/typographizer-js.svg)](https://greenkeeper.io/)
+
 <!-- Shortcode definitions at the bottom of the file -->
 
 [![Code Coverage][codecov-img]][codecov-url]
