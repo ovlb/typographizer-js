@@ -2,7 +2,7 @@
   "name": "typographizer-js",
   "version": "0.0.0",
   "description": "A script to fix typographic errors",
-  "main": "index.js",
+  "main": "dist/index.umd.js",
   "scripts": {
     "ci": "npm run test:report && npm run build",
     "build": "rollup -c --environment BUILD:production",
@@ -20,7 +20,14 @@
     "text formatting",
     "design"
   ],
-  "author": "Oscar Braunert",
+  "author": {
+    "name": "Oscar Braunert",
+    "url": "https://www.ovl.design",
+    "email": "o@ovl.design"
+  },
+  "engines": {
+    "node": "^8.12.0"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ovlb/typographizer-js/issues"
@@ -46,5 +53,9 @@
     "rollup-plugin-cleaner": "^0.2.0",
     "rollup-plugin-filesize": "^6.0.1"
   },
+  "files": [
+    "dist",
+    "source"
+  ],
   "dependencies": {}
 }
