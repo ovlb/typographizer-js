@@ -1,11 +1,13 @@
 # TypographizerJS
 
+
 <!-- Shortcode definitions at the bottom of the file -->
 
 [![Code Coverage][codecov-img]][codecov-url]
 [![Build Status][travis-img]][travis-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![Dev Dependency Status][devdepstat-image]][devdepstat-url]
+[![Greenkeeper badge][greenkeeper-img]][greenkeeper-url]
 
 
 Typographizer automates ~~everything~~ some things you don’t want (or need) to know about typography.
@@ -14,9 +16,7 @@ Typographizer automates ~~everything~~ some things you don’t want (or need) to
 
 ## Acknowledgement
 
-The JS version is inspired by the [Typographizer](https://github.com/frankrausch/Typographizer) by [Frank Rausch](https://frankrausch.com/ "Homepage of Frank Rausch"), written in Swift.
-
-🙇‍
+The JS version is inspired by the [Typographizer](https://github.com/frankrausch/Typographizer) by [Frank Rausch](https://frankrausch.com/ "Homepage of Frank Rausch"), written in Swift. 🙇‍
 
 
 ## Usage
@@ -96,7 +96,7 @@ To avoid side effects and confusion, It is **not** possible to change these opti
 
 ## API
 
-All these methods return Promises. Usage instructions for the `typographize` apply.
+All these methods return Promises. Usage instructions for `typographize` usage apply.
 
 ### Methods
 
@@ -152,3 +152,5 @@ This list is missing Japanese and Hebrew, which are supported by Typographizer. 
 
 [devdepstat-url]: https://david-dm.org/ovlb/typographizer-js#info=devDependencies
 [devdepstat-image]: https://img.shields.io/david/dev/ovlb/typographizer-js/master.svg
+[greenkeeper-img]: https://badges.greenkeeper.io/ovlb/typographizer-js.svg
+[greenkeeper-url]: https://greenkeeper.io/
