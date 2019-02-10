@@ -33,8 +33,6 @@ export default class TypographizerJS {
     }
 
     this.options = { ...defaultOptions, ...options }
-
-    this.string = undefined
   }
 
   /**
@@ -48,14 +46,9 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async typographize (string) {
-    this.string = string
-
-    string = string.trim()
-
-    return this.replaceOpeningQuotes(string)
+    return this.trimWhitespace(string)
+      .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
-
-    // return string
   }
 
   /**
@@ -85,7 +78,7 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async trimWhitespace (str) {
-    return str.trim().replace(/\u0020{2,}/gmiu, /\u0020/)
+    return str.trim().replace(/\u0020{2,}/gmiu, ' ')
   }
 
   /**
