@@ -2,7 +2,7 @@
   "name": "typographizer-js",
   "version": "0.0.0",
   "description": "A script to fix typographic errors",
-  "main": "index.js",
+  "main": "dist/index.umd.js",
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "test": "ava",
@@ -42,5 +42,10 @@
     "rollup-plugin-cleaner": "^0.2.0",
     "rollup-plugin-filesize": "^6.0.1",
     "rollup-plugin-terser": "^4.0.4"
-  }
+  },
+  "files": [
+    "dist",
+    "source"
+  ],
+  "dependencies": {}
 }
