@@ -4,11 +4,12 @@
   "description": "A script to fix typographic errors",
   "main": "dist/index.umd.js",
   "scripts": {
+    "ci": "npm run test:report && npm run build",
     "build": "rollup -c --environment BUILD:production",
     "test": "ava",
     "test:watch": "ava --watch",
-    "test:coverage": "nyc ava",
-    "test:report": "npm run test:coverage && nyc report --reporter=text-lcov > coverage.lcov"
+    "test:coverage": "nyc ava --reporter=text-lcov",
+    "test:report": "nyc ava && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   },
   "homepage": "https://github.com/ovlb/typographizer-js#readme",
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "ava": "^1.2.1",
     "babel-eslint": "^10.0.1",
@@ -38,10 +42,9 @@
     "esm": "^3.2.4",
     "nyc": "^13.2.0",
     "rollup": "^1.1.2",
-    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-cleaner": "^0.2.0",
     "rollup-plugin-filesize": "^6.0.1",
-    "rollup-plugin-terser": "^4.0.4"
   },
   "files": [
     "dist",
