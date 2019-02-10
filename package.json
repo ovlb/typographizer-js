@@ -20,7 +20,14 @@
     "text formatting",
     "design"
   ],
-  "author": "Oscar Braunert",
+  "author": {
+    "name": "Oscar Braunert",
+    "url": "https://www.ovl.design",
+    "email": "o@ovl.design"
+  },
+  "engines": {
+    "node": "^8.12.0"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ovlb/typographizer-js/issues"
