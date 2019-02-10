@@ -4,6 +4,7 @@
   "description": "A script to fix typographic errors",
   "main": "index.js",
   "scripts": {
+    "ci": "npm run test:report && npm run build",
     "build": "rollup -c --environment BUILD:production",
     "test": "ava",
     "test:watch": "ava --watch",
