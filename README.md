@@ -1,8 +1,11 @@
+<img width="240" height="240" src="https://raw.githubusercontent.com/ovlb/typographizer-js/chore/add-logo/img/logo-8c.png" alt="Logo of Typographizer JS">
+
 # TypographizerJS
 
 
 <!-- Shortcode definitions at the bottom of the file -->
 
+[![Published version][npm-img]][npm-url]
 [![Code Coverage][codecov-img]][codecov-url]
 [![Build Status][travis-img]][travis-url]
 [![Dependency Status][depstat-image]][depstat-url]
@@ -142,6 +145,9 @@ Supported languages are:
 This list is missing Japanese and Hebrew, which are supported by Typographizer. Hebrew is missing due to complicated support. Japanese requires extended Unicode checks.
 
 <!-- Badges shortcodes -->
+[npm-img]: https://img.shields.io/npm/v/typographizer-js.svg?style=flat
+[npm-url]: https://www.npmjs.com/package/typographizer-js
+
 [codecov-url]: https://codecov.io/gh/ovlb/typographizer-js
 [codecov-img]: https://codecov.io/gh/ovlb/typographizer-js/branch/master/graph/badge.svg
 
