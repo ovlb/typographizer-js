@@ -1,3 +1,5 @@
+<img width="240" height="240" src="https://raw.githubusercontent.com/ovlb/typographizer-js/chore/add-logo/img/logo-8c.png" alt="Logo of Typographizer JS">
+
 # TypographizerJS
 
 
