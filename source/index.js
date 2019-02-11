@@ -1,4 +1,5 @@
 import supportedLanguages from './data/supportedLanguages'
+import quotesets from './data/quotesets'
 
 /**
  * Typographizer. Your friendly helper to correct common typographic mistakes.
@@ -15,24 +16,21 @@ import supportedLanguages from './data/supportedLanguages'
  * @license MIT
  */
 export default class TypographizerJS {
-  constructor (options) {
-    if (options && !supportedLanguages.find(l => l.code === options.language)) {
-      return new Error('Language in `options` is not supported.')
-    }
-
+  constructor (language, options) {
+    const userLanguage = language ? supportedLanguages.find(l => l.code === language) : false
     const defaultOptions = {
-      isHTML: false,
-      language: { code: 'en', set: 0 }
+      isHTML: false
     }
 
-    this.quotes = {
-      openingDouble: '“',
-      closingDouble: '”',
-      openingSingle: '‘',
-      closingSingle: '’'
+    if (language && !userLanguage) {
+      return new Error(`Language «${language}» is not supported.`)
     }
 
     this.options = { ...defaultOptions, ...options }
+    this.language = userLanguage || { code: 'en', set: 0 }
+
+    const { set } = this.language
+    this.quotes = quotesets[set]
   }
 
   /**
