@@ -22,7 +22,7 @@ export default class TypographizerJS {
 
     const defaultOptions = {
       isHTML: false,
-      language: 'en'
+      language: { code: 'en', set: 0 }
     }
 
     this.quotes = {
