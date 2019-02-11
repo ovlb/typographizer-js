@@ -8,9 +8,9 @@ test.beforeEach(async (t) => {
 })
 
 test('Default language is en', (t) => {
-  const { language } = Typographizer.options
+  const { code } = Typographizer.options.language
 
-  t.is(language, 'en')
+  t.is(code, 'en')
 })
 
 test('Can set language', (t) => {
