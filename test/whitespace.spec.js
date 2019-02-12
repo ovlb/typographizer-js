@@ -12,15 +12,11 @@ beforeEach(async () => {
 })
 
 test('Remove whitespace at the beginning of string', (t) => {
-  const firstToken = replaced.slice(0, 1)
-
-  t.false(firstToken === ' ')
+  t.false(replaced.startsWith(' '))
 })
 
 test('Remove whitespace at the end of string', (t) => {
-  const lastToken = replaced.slice(-1)
-
-  t.false(lastToken === ' ')
+  t.false(replaced.endsWith(' '))
 })
 
 test('Remove multiple spaces inside string', (t) => {
