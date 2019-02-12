@@ -20,11 +20,11 @@ test('Remove `" `', (t) => {
 })
 
 test('Remove `"` at beginning of string.', (t) => {
-  t.false(replaced.slice(0, 1) === '"')
+  t.false(replaced.startsWith('"'))
 })
 
 test('Remove `"` at end of string.', (t) => {
-  t.false(replaced.slice(-1) === '"')
+  t.false(replaced.endsWith('"'))
 })
 
 test('Remove ` \'`', (t) => {
