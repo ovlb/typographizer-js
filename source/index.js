@@ -23,6 +23,10 @@ export default class TypographizerJS {
       return new Error(`Language «${language}» is not supported.`)
     }
 
+    this.options = {
+      characterRange: '\u0030-\u02af|\u0370-\u1fff'
+    }
+
     this.language = userLanguage || { code: 'en_US', set: 0 }
 
     const { set } = this.language
@@ -56,7 +60,8 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async fixApostroph (str) {
-    const find = /(?<=[\u0030-\u02af|\u0370-\u1fff])(['´`])(?=[\u0030-\u02af|\u0370-\u1fff])/gimu
+    const { characterRange } = this.options
+    const find = new RegExp(`/(?<=[${characterRange}])(['\u0300\u0301])(?=[${characterRange}])/gimu`)
 
     return str.replace(find, '’')
   }
@@ -120,13 +125,13 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async formatOpeningQuotes (str) {
+    const { openingDouble, openingSingle } = this.quotes
+    const { characterRange } = this.options
     // Match all " that are followed by any letter from the Basic Latin to Greek Extended character sets
     // The characters between \u02af and \u0370 are Combining Diacrital Marks
     // To allow for nested quotes we also check for single quotes
-    const openingDoubleQuotes = /^"|(?<!=)(?<= )"(?=[\u0030-\u02af|\u0370-\u1fff'’‹›])(?!>)/gimu
-    const openingSingleQuotes = /(?<=[\s|"|«|»|„|“])(')(?=[\u0030-\u02af|\u0370-\u1fff])/gmiu
-
-    const { openingDouble, openingSingle } = this.quotes
+    const openingDoubleQuotes = new RegExp(`/^"|(?<!=)(?<= )"(?=[${characterRange}'${openingSingle}])(?!>)/gimu`)
+    const openingSingleQuotes = new RegExp(`/(?<=[ |${openingSingle}])(')(?=[${characterRange}])/gmiu`)
 
     return str
       .replace(openingDoubleQuotes, openingDouble)
