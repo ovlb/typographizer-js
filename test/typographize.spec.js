@@ -3,7 +3,7 @@ import TypographizerJS from '../source'
 
 import exampleEn from './__samples__/en'
 
-test('EN', async (t) => {
+test('en_US', async (t) => {
   const Typographizer = new TypographizerJS()
   const replaced = await Typographizer.typographize(exampleEn)
 

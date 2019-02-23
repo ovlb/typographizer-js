@@ -23,7 +23,7 @@ export default class TypographizerJS {
       return new Error(`Language «${language}» is not supported.`)
     }
 
-    this.language = userLanguage || { code: 'en', set: 0 }
+    this.language = userLanguage || { code: 'en_US', set: 0 }
 
     const { set } = this.language
     this.quotes = quotesets[set]
