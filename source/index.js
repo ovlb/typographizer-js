@@ -59,12 +59,9 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async fixApostroph (str) {
-    // TODO: Once lookbehinds land this could well be optimized
-    // (or once someone who actually understands regex looks at this)
-    const find = /(?:[a-z])(['´`])(?=[a-z])/gimu
-    const apo = /['´`]/gimu
+    const find = /(?<=[\u0030-\u02af|\u0370-\u1fff])(['´`])(?=[\u0030-\u02af|\u0370-\u1fff])/gimu
 
-    return str.replace(find, (found) => found.replace(apo, '’'))
+    return str.replace(find, '’')
   }
 
   /**
