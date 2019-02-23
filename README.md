@@ -56,7 +56,7 @@ And crate a new instance:
 const Typographizer = new TypographizerJS()
 ```
 
-<!-- Note: Typographizer will preserve inline HTML Tags (a, strong, em), but should not be used to format large bunches of source code. -->
+Note: Typographizer will preserve inline HTML Tags (a, strong, em), but should not be used to format large bunches of source code.
 
 Once you have your Typographizer instance available you can format strings using the `typographize()` method.
 
