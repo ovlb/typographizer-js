@@ -81,7 +81,7 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async fixAiryPunctuation (str) {
-    const airy = /( )[.,?!]{1}(?= +)/gimu
+    const airy = /( )[.,;?!]{1}(?= +)/gimu
 
     return str.replace(airy, (found) => found.trim())
   }
