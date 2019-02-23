@@ -122,7 +122,7 @@ export default class TypographizerJS {
     // Match all " that are followed by any letter from the Basic Latin to Greek Extended character sets
     // The characters between \u02af and \u0370 are Combining Diacrital Marks
     // To allow for nested quotes we also check for single quotes
-    const openingDoubleQuotes = /(")(?=[\u0030-\u02af|\u0370-\u1fff'’‹›])/gimu
+    const openingDoubleQuotes = /^"|(?<!=)(?<= )"(?=[\u0030-\u02af|\u0370-\u1fff'’‹›])(?!>)/gimu
     const openingSingleQuotes = /(?<=[\s|"|«|»|„|“])(')(?=[\u0030-\u02af|\u0370-\u1fff])/gmiu
 
     const { openingDouble, openingSingle } = this.quotes
@@ -141,7 +141,7 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async formatClosingQuotes (str) {
-    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])|("$)/gimu
+    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])(?!( [a-z]+=))|("$)/gimu
     const closingSingleQuote = /(?<!\d)'(?=[\s,."”«»])/gimu
 
     const { closingDouble, closingSingle } = this.quotes

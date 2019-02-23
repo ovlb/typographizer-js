@@ -3,6 +3,7 @@ import TypographizerJS from '../source'
 
 import exampleEn from './__samples__/en'
 import footInch from './__samples__/foot-inch'
+import html from './__samples__/html'
 
 let Typographizer
 let replaced
@@ -57,4 +58,10 @@ test('Preserve nested opening quotes', (t) => {
 
 test('Preserve nested closing quote', (t) => {
   t.true(replaced.includes(`’”`))
+})
+
+test('Preserve HTML tags', async (t) => {
+  replaced = await Typographizer.formatQuotes(html)
+
+  t.is(replaced, html)
 })
