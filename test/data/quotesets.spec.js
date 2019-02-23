@@ -63,3 +63,12 @@ test('set 6', (t) => {
     closingSingle: `’`
   })
 })
+
+test('set 7', (t) => {
+  t.deepEqual(quotesets[7], {
+    openingDouble: `‘`,
+    closingDouble: `’`,
+    openingSingle: `“`,
+    closingSingle: `”`
+  })
+})
