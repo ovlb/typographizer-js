@@ -16,17 +16,13 @@ import quotesets from './data/quotesets'
  * @license MIT
  */
 export default class TypographizerJS {
-  constructor (language, options) {
+  constructor (language) {
     const userLanguage = language ? supportedLanguages.find(l => l.code === language) : false
-    const defaultOptions = {
-      isHTML: false
-    }
 
     if (language && !userLanguage) {
       return new Error(`Language «${language}» is not supported.`)
     }
 
-    this.options = { ...defaultOptions, ...options }
     this.language = userLanguage || { code: 'en', set: 0 }
 
     const { set } = this.language
