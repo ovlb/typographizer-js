@@ -73,6 +73,19 @@ export default class TypographizerJS {
   }
 
   /**
+   * Trim whitespace
+   *
+   * @param {*} str
+   * @returns
+   * @memberof TypographizerJS
+   */
+  async fixAiryPunctuation (str) {
+    const airy = /( )[.,?!]{1}(?= +)/gimu
+
+    return str.replace(airy, (found) => found.trim())
+  }
+
+  /**
    * Trim whitespace from beginning and end of string and replace multiple spaces
    * inside of a string with a single one.
    *
