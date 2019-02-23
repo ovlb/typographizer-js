@@ -44,6 +44,7 @@ export default class TypographizerJS {
       .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
       .then((str) => this.fixEllipsis(str))
+      .then((str) => this.fixAiryPunctuation(str))
   }
 
   /**
