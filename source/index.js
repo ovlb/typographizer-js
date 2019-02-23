@@ -44,6 +44,7 @@ export default class TypographizerJS {
       .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
       .then((str) => this.fixEllipsis(str))
+      .then((str) => this.fixAiryPunctuation(str))
   }
 
   /**
@@ -70,6 +71,19 @@ export default class TypographizerJS {
    */
   async fixEllipsis (str) {
     return str.replace(/(\.{3})/gmiu, '…')
+  }
+
+  /**
+   * Trim whitespace
+   *
+   * @param {*} str
+   * @returns
+   * @memberof TypographizerJS
+   */
+  async fixAiryPunctuation (str) {
+    const airy = /( )[.,;?!]{1}(?= +)/gimu
+
+    return str.replace(airy, (found) => found.trim())
   }
 
   /**
