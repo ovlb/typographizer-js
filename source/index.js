@@ -136,8 +136,8 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async formatClosingQuotes (str) {
-    const closingDoubleQuote = /"(?=[\s,.])|("$)/gimu
-    const closingSingleQuote = /'(?=[\s,."”«»])/gimu
+    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])|("$)/gimu
+    const closingSingleQuote = /(?<!\d)'(?=[\s,."”«»])/gimu
 
     const { closingDouble, closingSingle } = this.quotes
 
