@@ -26,6 +26,8 @@ The JS version is inspired by the [Typographizer](https://github.com/frankrausch
 
 ### Here be dragons 🐉
 
+This package uses RegExp lookbehinds. These are not universally supported. You can use it in Node >=6.4 with enabled `--harmony` flag, without a flag in Node >=9.11.
+
 You should not use this in the browser (probably). Formatting and reinserting long strings is a mayor performance hit.
 
 In general, this is more of a fun project. So, use with caution.
@@ -56,7 +58,7 @@ const Typographizer = new TypographizerJS()
 
 <!-- Note: Typographizer will preserve inline HTML Tags (a, strong, em), but should not be used to format large bunches of source code. -->
 
-Once you have your Typographizer available you can format strings using the `typographize()` method.
+Once you have your Typographizer instance available you can format strings using the `typographize()` method.
 
 `typographize` returns a Promise. So you need to either await the return value or use `.then()`.
 
@@ -85,17 +87,15 @@ Typographizer uses a bunch of different methods under the hood. All of them can 
 
 ### Options
 
-Typographizer accepts an options object. You can specify this during initialization.
+By default quotes will be formatted to match `en_US` style. If you need different formatting, pass a language code while initializing.
 
 ```js
-const Typographizer = new TypographizerJS({
-  language: 'de'
-})
+const Typographizer = new TypographizerJS('fr')
 ```
 
 You can find a list of supported languages further down this file.
 
-To avoid side effects and confusion, It is **not** possible to change these options after you created your instance. If you want to format text in multiple languages, you need to create multiple instances.
+⚠️ To avoid side effects and confusion, It is **not** possible to change these options after you created your instance. If you want to format text in multiple languages, you need to create multiple instances.
 
 ## API
 

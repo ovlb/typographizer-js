@@ -16,17 +16,13 @@ import quotesets from './data/quotesets'
  * @license MIT
  */
 export default class TypographizerJS {
-  constructor (language, options) {
+  constructor (language) {
     const userLanguage = language ? supportedLanguages.find(l => l.code === language) : false
-    const defaultOptions = {
-      isHTML: false
-    }
 
     if (language && !userLanguage) {
       return new Error(`Language «${language}» is not supported.`)
     }
 
-    this.options = { ...defaultOptions, ...options }
     this.language = userLanguage || { code: 'en', set: 0 }
 
     const { set } = this.language
@@ -59,12 +55,9 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async fixApostroph (str) {
-    // TODO: Once lookbehinds land this could well be optimized
-    // (or once someone who actually understands regex looks at this)
-    const find = /(?:[a-z])(['´`])(?=[a-z])/gimu
-    const apo = /['´`]/gimu
+    const find = /(?<=[\u0030-\u02af|\u0370-\u1fff])(['´`])(?=[\u0030-\u02af|\u0370-\u1fff])/gimu
 
-    return str.replace(find, (found) => found.replace(apo, '’'))
+    return str.replace(find, '’')
   }
 
   /**
@@ -117,14 +110,13 @@ export default class TypographizerJS {
     // The characters between \u02af and \u0370 are Combining Diacrital Marks
     // To allow for nested quotes we also check for single quotes
     const openingDoubleQuotes = /(")(?=[\u0030-\u02af|\u0370-\u1fff'’‹›])/gimu
-
-    const openingSingleQuotes = /([\s |"|«|»|„|“])(')(?=[\u0030-\u02af|\u0370-\u1fff])/gmiu
+    const openingSingleQuotes = /(?<=[\s|"|«|»|„|“])(')(?=[\u0030-\u02af|\u0370-\u1fff])/gmiu
 
     const { openingDouble, openingSingle } = this.quotes
 
     return str
       .replace(openingDoubleQuotes, openingDouble)
-      .replace(openingSingleQuotes, (found) => found.replace(`'`, openingSingle))
+      .replace(openingSingleQuotes, openingSingle)
   }
 
   /**
@@ -136,8 +128,8 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async formatClosingQuotes (str) {
-    const closingDoubleQuote = /"(?=[\s,.])|("$)/gimu
-    const closingSingleQuote = /'(?=[\s,."”«»])/gimu
+    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])|("$)/gimu
+    const closingSingleQuote = /(?<!\d)'(?=[\s,."”«»])/gimu
 
     const { closingDouble, closingSingle } = this.quotes
 

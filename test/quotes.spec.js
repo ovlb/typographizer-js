@@ -2,6 +2,7 @@ import test from 'ava'
 import TypographizerJS from '../source'
 
 import exampleEn from './__samples__/en'
+import footInch from './__samples__/foot-inch'
 
 let Typographizer
 let replaced
@@ -41,6 +42,13 @@ test('Do not fix apostrophes', (t) => {
 
 test('Do not remove whitespace', (t) => {
   t.true(replaced.includes('  '))
+})
+
+test('Do not format foot and inch', async (t) => {
+  const TypographizerFootInch = new TypographizerJS('en')
+  const replaced = await TypographizerFootInch.formatQuotes(footInch)
+
+  t.true(replaced.includes(`6' 10".`))
 })
 
 test('Preserve nested opening quotes', (t) => {
