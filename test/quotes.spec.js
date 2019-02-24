@@ -9,7 +9,7 @@ let Typographizer
 let replaced
 
 test.beforeEach(async (t) => {
-  Typographizer = new TypographizerJS()
+  Typographizer = new TypographizerJS('en_US')
   replaced = await Typographizer.formatQuotes(exampleEn)
 })
 
@@ -46,7 +46,7 @@ test('Do not remove whitespace', (t) => {
 })
 
 test('Do not format foot and inch', async (t) => {
-  const TypographizerFootInch = new TypographizerJS('en')
+  const TypographizerFootInch = new TypographizerJS('en_US')
   const replaced = await TypographizerFootInch.formatQuotes(footInch)
 
   t.true(replaced.includes(`6' 10".`))

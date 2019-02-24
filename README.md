@@ -126,7 +126,8 @@ Supported languages are:
 | Czech | cz |
 | Danish | da |
 | Dutch, Flemish | nl |
-| English (default) | en |
+| British English | en_GB |
+| American English (default) | en_US |
 | Estonian | es |
 | Finnish | fi |
 | French | fr |

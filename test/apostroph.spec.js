@@ -11,6 +11,12 @@ test.beforeEach(async (t) => {
   replaced = await Typographizer.fixApostroph(exampleEn)
 })
 
+test('Replace straight apostroph', (t) => {
+  t.plan(2)
+  t.false(replaced.includes(`wasn't`))
+  t.false(replaced.includes(`It's`))
+})
+
 // The accent aigu is a diacritical sign and should, in western languages, not stand on its own
 test('Remove ´', (t) => {
   t.false(replaced.includes('´'))

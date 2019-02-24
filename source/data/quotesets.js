@@ -40,5 +40,11 @@ export default {
     closingDouble: `»`,
     openingSingle: `’`,
     closingSingle: `’`
+  },
+  7: {
+    openingDouble: `‘`,
+    closingDouble: `’`,
+    openingSingle: `“`,
+    closingSingle: `”`
   }
 }
