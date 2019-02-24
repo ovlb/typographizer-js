@@ -9,7 +9,7 @@ let Typographizer
 let replaced
 
 test.beforeEach(async (t) => {
-  Typographizer = new TypographizerJS()
+  Typographizer = new TypographizerJS('en_US')
   replaced = await Typographizer.formatQuotes(exampleEn)
 })
 
