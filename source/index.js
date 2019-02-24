@@ -24,7 +24,7 @@ export default class TypographizerJS {
     }
 
     this.options = {
-      characterRange: '\u0030-\u02af|\u0370-\u1fff'
+      characterRange: `\\u0030-\\u02af|\\u0370-\\u1fff`
     }
 
     this.language = userLanguage || { code: 'en_US', set: 0 }
@@ -61,7 +61,7 @@ export default class TypographizerJS {
    */
   async fixApostroph (str) {
     const { characterRange } = this.options
-    const find = new RegExp(`/(?<=[${characterRange}])(['\u0300\u0301])(?=[${characterRange}])/gimu`)
+    const find = new RegExp(`(?<=[${characterRange}])(['\u0300\u0301´])(?=[${characterRange}])`, 'gmiu')
 
     return str.replace(find, '’')
   }
@@ -130,8 +130,8 @@ export default class TypographizerJS {
     // Match all " that are followed by any letter from the Basic Latin to Greek Extended character sets
     // The characters between \u02af and \u0370 are Combining Diacrital Marks
     // To allow for nested quotes we also check for single quotes
-    const openingDoubleQuotes = new RegExp(`/^"|(?<!=)(?<= )"(?=[${characterRange}'${openingSingle}])(?!>)/gimu`)
-    const openingSingleQuotes = new RegExp(`/(?<=[ |${openingSingle}])(')(?=[${characterRange}])/gmiu`)
+    const openingDoubleQuotes = new RegExp(`^"|(?<!=)(?<= )"(?=[${characterRange}'${openingSingle}])(?!>)`, 'gmiu')
+    const openingSingleQuotes = new RegExp(`(?<=[ "${openingDouble}])(')(?=[${characterRange}])`, 'gmiu')
 
     return str
       .replace(openingDoubleQuotes, openingDouble)
@@ -147,10 +147,10 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async formatClosingQuotes (str) {
-    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])(?!( [a-z]+=))|("$)/gimu
-    const closingSingleQuote = /(?<!\d)'(?=[\s,."”«»])/gimu
-
     const { closingDouble, closingSingle } = this.quotes
+
+    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])(?!( [a-z]+=))|("$)/gimu
+    const closingSingleQuote = new RegExp(`(?<!\\d)'(?=[\\s,."${closingDouble}])`, 'gimu')
 
     return str
       .replace(closingDoubleQuote, closingDouble)
