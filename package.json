@@ -47,7 +47,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "esm": "^3.2.4",
-    "nyc": "^14.0.0",
+    "nyc": "^14.1.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-cleaner": "^0.2.0",
