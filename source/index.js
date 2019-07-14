@@ -81,12 +81,16 @@ export default class TypographizerJS {
   /**
    * Trim whitespace
    *
+   * Regexr example: https://regexr.com/4he5a
+   *
    * @param {*} str
    * @returns
    * @memberof TypographizerJS
    */
   async fixAiryPunctuation (str) {
-    const airy = /( )[.,;?!]{1}(?= +)/gimu
+    if (this.language.code === 'fr') return str
+
+    const airy = /( )[.,;?!]{1}(?= *)/gimu
 
     return str.replace(airy, (found) => found.trim())
   }

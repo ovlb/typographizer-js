@@ -1,1 +1,1 @@
-export const airyPunctuation = `I know that many people were taught to put two spaces between sentences . I was too. But these days , using two spaces is an obsolete habit . Some say the habit originated in the typewriter era.`
+export const airyPunctuation = `I know that many people were taught to put two spaces between sentences . I was too. But these days , using two spaces is an obsolete habit . Some say the habit originated in the typewriter era. Oh ; by the way, what time is it ?`
