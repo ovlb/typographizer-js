@@ -30,3 +30,22 @@ jobs:
           name: coverage
           path: coverage
           if-no-files-found: ignore
+
+  performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26
+          cache: npm
+      - run: npm ci
+      # Unit-level benchmark tests (correctness of the measurements).
+      - run: npm run test:perf
+      # Performance gate: benchmark this branch back-to-back against main on
+      # the same runner, interleaved per suite, so hardware noise cancels out.
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+          path: main-ref
+      - run: node test/perf/compare-cli.ts main-ref

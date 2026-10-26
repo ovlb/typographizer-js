@@ -5,9 +5,13 @@
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "scripts": {
-    "test": "ava",
+    "test": "ava && npm run test:perf",
+    "test:perf": "ava --config ava.perf.config.js",
+    "test:perf:watch": "ava --config ava.perf.config.js --watch",
     "test:watch": "ava --watch",
     "test:coverage": "c8 ava",
+    "bench": "node test/perf/cli.ts",
+    "bench:compare": "node test/perf/compare-cli.ts",
     "build": "tsc -p tsconfig.build.json && rollup -c",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -36,6 +40,7 @@
   },
   "homepage": "https://github.com/ovlb/typographizer-js#readme",
   "devDependencies": {
+    "@types/node": "^26.6.5",
     "ava": "^8.1.2",
     "c8": "^12.0.0",
     "eslint": "^10.13.0",
