@@ -6,7 +6,7 @@ import example from './__samples__/ellipsis.ts'
 let Typographizer: TypographizerJS
 let replaced: string
 
-test.beforeEach(async (t) => {
+test.beforeEach(async (_t) => {
   Typographizer = new TypographizerJS()
   replaced = await Typographizer.fixEllipsis(example)
 })

@@ -8,7 +8,9 @@
     "test": "ava",
     "test:watch": "ava --watch",
     "test:coverage": "c8 ava",
-    "build": "tsc -p tsconfig.build.json && rollup -c"
+    "build": "tsc -p tsconfig.build.json && rollup -c",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -35,7 +37,10 @@
   "devDependencies": {
     "ava": "^8.1.2",
     "c8": "^12.0.0",
+    "eslint": "^10.13.0",
+    "neostandard": "^0.14.1",
     "rollup": "^4.65.1",
-    "typescript": "^7.0.2"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1"
   }
 }

@@ -3,7 +3,7 @@ import TypographizerJS from '../source/index.ts'
 
 let Typographizer: TypographizerJS
 
-test.beforeEach(async (t) => {
+test.beforeEach(async (_t) => {
   Typographizer = new TypographizerJS()
 })
 

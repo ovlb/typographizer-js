@@ -8,7 +8,7 @@ import html from './__samples__/html.ts'
 let Typographizer: TypographizerJS
 let replaced: string
 
-test.beforeEach(async (t) => {
+test.beforeEach(async (_t) => {
   Typographizer = new TypographizerJS('en_US')
   replaced = await Typographizer.formatQuotes(exampleEn)
 })

@@ -36,7 +36,6 @@ export default class TypographizerJS {
     const userLanguage = language ? supportedLanguages.find(l => l.code === language) : false
 
     if (language && !userLanguage) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return new Error(`Language «${language}» is not supported.`) as unknown as TypographizerJS
     }
 
