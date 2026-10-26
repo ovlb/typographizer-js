@@ -103,7 +103,7 @@ export function computeLimit (
  * English sample text. Quotes, ellipses, apostrophes and whitespace issues
  * recur throughout, so every pass of the pipeline has work to do.
  */
-function buildSample (targetBytes: number): string {
+export function buildSample (targetBytes: number): string {
   const separator = ' '
   const unit = exampleEn + separator
   const unitBytes = Buffer.byteLength(unit)

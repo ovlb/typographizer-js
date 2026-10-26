@@ -16,8 +16,13 @@ function loadBaseline (): Baseline {
 }
 
 // Benchmark tests must never overlap: concurrent runs compete for GC and
-// inflate each other's timings.
-test.serial('current implementation stays within 1.5× of the machine-normalized baseline', async (t) => {
+// inflate each other's timings. Absolute baselines only hold on the machine
+// they were recorded on and CI runners are too noisy even with calibration —
+// so this check runs locally only; CI uses the A/B comparison against main
+// (test/perf/compare-cli.ts).
+const baselineTest = process.env.CI ? test.serial.skip : test.serial
+
+baselineTest('current implementation stays within 1.5× of the machine-normalized baseline', async (t) => {
   const baseline = loadBaseline()
   const current = await runAllBenchmarks()
   const calibrationCurrent = await runCalibration()

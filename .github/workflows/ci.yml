@@ -23,6 +23,15 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test:coverage
+      # Performance gate: benchmark this PR back-to-back against main on the
+      # same runner, interleaved per suite, so hardware noise cancels out.
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+          path: main-ref
+      - run: npm ci
+        working-directory: main-ref
+      - run: node test/perf/compare-cli.ts main-ref
       - run: npm run build
       - uses: actions/upload-artifact@v7.0.2
         if: matrix.node == 26
