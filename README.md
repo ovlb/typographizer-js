@@ -6,11 +6,7 @@
 <!-- Shortcode definitions at the bottom of the file -->
 
 [![Published version][npm-img]][npm-url]
-[![Code Coverage][codecov-img]][codecov-url]
-[![Build Status][travis-img]][travis-url]
-[![Dependency Status][depstat-image]][depstat-url]
-[![Dev Dependency Status][devdepstat-image]][devdepstat-url]
-[![Greenkeeper badge][greenkeeper-img]][greenkeeper-url]
+[![Build Status][ci-img]][ci-url]
 
 
 Typographizer automates ~~everything~~ some things you don’t want (or need) to know about typography.
@@ -26,7 +22,7 @@ The JS version is inspired by the [Typographizer](https://github.com/frankrausch
 
 ### Here be dragons 🐉
 
-This package uses RegExp lookbehinds. These are not universally supported. You can use it in Node >=6.4 with enabled `--harmony` flag, without a flag in Node >=9.11.
+This package uses RegExp lookbehinds. These are supported in evergreen browsers and Node ≥ 16 (out of the box).
 
 You should not use this in the browser (probably). Formatting and reinserting long strings is a mayor performance hit.
 
@@ -38,17 +34,17 @@ In general, this is more of a fun project. So, use with caution.
 npm install typographizer-js
 ```
 
-If you are using Yarn:
-
-```bash
-yarn add typographizer-js
-```
-
 Import the bundle into your project:
 
 ```js
+// ESM
+import TypographizerJS from 'typographizer-js'
+
+// CommonJS
 const TypographizerJS = require('typographizer-js')
 ```
+
+TypeScript types ship with the package.
 
 And crate a new instance:
 
@@ -153,13 +149,5 @@ This list is missing Japanese and Hebrew, which are supported by Typographizer. 
 [codecov-url]: https://codecov.io/gh/ovlb/typographizer-js
 [codecov-img]: https://codecov.io/gh/ovlb/typographizer-js/branch/master/graph/badge.svg
 
-[travis-url]: https://travis-ci.org/ovlb/typographizer-js
-[travis-img]: https://travis-ci.org/ovlb/typographizer-js.svg?branch=master
-
-[depstat-url]: https://david-dm.org/ovlb/typographizer-js
-[depstat-image]: https://img.shields.io/david/ovlb/typographizer-js/master.svg
-
-[devdepstat-url]: https://david-dm.org/ovlb/typographizer-js#info=devDependencies
-[devdepstat-image]: https://img.shields.io/david/dev/ovlb/typographizer-js/master.svg
-[greenkeeper-img]: https://badges.greenkeeper.io/ovlb/typographizer-js.svg
-[greenkeeper-url]: https://greenkeeper.io/
+[ci-url]: https://github.com/ovlb/typographizer-js/actions/workflows/ci.yml
+[ci-img]: https://github.com/ovlb/typographizer-js/actions/workflows/ci.yml/badge.svg
