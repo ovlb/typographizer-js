@@ -49,7 +49,7 @@ And crate a new instance:
 const Typographizer = new TypographizerJS()
 ```
 
-Note: Typographizer will preserve inline HTML Tags (a, strong, em), but should not be used to format large bunches of source code.
+Note: `typographize()` is safe to use on Markdown documents and rendered HTML. Inline HTML tags (a, strong, em) are preserved, and code samples are skipped: fenced code blocks (``` and ~~~), inline code spans (`…`), as well as `<pre>` and `<code>` elements are left untouched. Everything outside of code segments gets the usual fixes. When code segments are present, whitespace is neither trimmed nor collapsed, so the document structure stays intact.
 
 Once you have your Typographizer instance available you can format strings using the `typographize()` method.
 
@@ -76,7 +76,7 @@ Typographizer.typographize(str)
   })
 ```
 
-Typographizer uses a bunch of different methods under the hood. All of them can be called on their own. For details, take a look at the API section below.
+Typographizer uses a bunch of different methods under the hood. All of them can be called on their own — note that code segments are only skipped when using `typographize()`. For details, take a look at the API section below.
 
 ### Options
 
