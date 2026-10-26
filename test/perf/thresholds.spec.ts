@@ -1,15 +1,13 @@
 import test from 'ava'
 import { readFileSync } from 'node:fs'
-import { runAllBenchmarks, type BenchResult } from './benchmark.ts'
+import { computeLimit, runAllBenchmarks, runCalibration, type BenchResult } from './benchmark.ts'
 
 const BASELINE_PATH = new URL('./baseline.json', import.meta.url)
-const ALLOWED_REGRESSION_FACTOR = 1.5
-
-/** Timings below ~0.1 ms are pure jitter; a relative limit alone would flake. */
-const ABSOLUTE_FLOOR_MS = 0.15
 
 interface Baseline {
   recordedAt: string
+  node: string
+  calibrationMs: number
   entries: Array<{ suite: string, label: string, bytes: number, bestMs: number }>
 }
 
@@ -19,9 +17,10 @@ function loadBaseline (): Baseline {
 
 // Benchmark tests must never overlap: concurrent runs compete for GC and
 // inflate each other's timings.
-test.serial('current implementation stays within 1.5× of recorded baseline (min 0.15 ms)', async (t) => {
+test.serial('current implementation stays within 1.5× of the machine-normalized baseline', async (t) => {
   const baseline = loadBaseline()
   const current = await runAllBenchmarks()
+  const calibrationCurrent = await runCalibration()
 
   for (const result of current) {
     const entry = baseline.entries.find((candidate) =>
@@ -32,10 +31,10 @@ test.serial('current implementation stays within 1.5× of recorded baseline (min
 
     if (!entry) continue
 
-    const limit = Math.max(entry.bestMs * ALLOWED_REGRESSION_FACTOR, ABSOLUTE_FLOOR_MS)
+    const limit = computeLimit(entry, baseline.calibrationMs, calibrationCurrent)
     t.true(
       result.bestMs <= limit,
-      `${result.suite} (${result.label}): ${result.bestMs.toFixed(2)} ms exceeds baseline ${entry.bestMs.toFixed(2)} ms × ${ALLOWED_REGRESSION_FACTOR} (limit ${limit.toFixed(2)} ms)`
+      `${result.suite} (${result.label}): ${result.bestMs.toFixed(2)} ms exceeds machine-normalized limit ${limit.toFixed(2)} ms (baseline ${entry.bestMs.toFixed(2)} ms, calibration ${baseline.calibrationMs.toFixed(2)} → ${calibrationCurrent.toFixed(2)})`
     )
   }
 })

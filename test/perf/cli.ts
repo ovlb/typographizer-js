@@ -6,10 +6,10 @@
  * `node test/perf/cli.ts --update` additionally overwrites test/perf/baseline.json.
  */
 import { writeFileSync } from 'node:fs'
-import { runAllBenchmarks } from './benchmark.ts'
+import { runAllBenchmarks, runCalibration } from './benchmark.ts'
 
 const updateBaseline = process.argv.includes('--update')
-const results = await runAllBenchmarks()
+const [results, calibrationMs] = await Promise.all([runAllBenchmarks(), runCalibration()])
 
 const labelWidth = 'size'.length
 const bytesWidth = 'bytes'.length
@@ -30,6 +30,7 @@ if (updateBaseline) {
   const baseline = {
     recordedAt: new Date().toISOString(),
     node: process.version,
+    calibrationMs: Number(calibrationMs.toFixed(4)),
     entries: results.map(({ suite, label, bytes, bestMs }) => ({
       suite,
       label,

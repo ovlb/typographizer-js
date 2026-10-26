@@ -1,66 +1,67 @@
 {
-  "recordedAt": "2026-10-26T21:25:42.097Z",
+  "recordedAt": "2026-10-26T21:32:15.560Z",
   "node": "v26.12.1",
+  "calibrationMs": 3.4887,
   "entries": [
     {
       "suite": "typographize:en_US",
       "label": "256 B",
       "bytes": 552,
-      "bestMs": 0.0046
+      "bestMs": 0.0038
     },
     {
       "suite": "typographize:en_US",
       "label": "1 KB",
       "bytes": 1105,
-      "bestMs": 0.0056
+      "bestMs": 0.0062
     },
     {
       "suite": "typographize:en_US",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0387
+      "bestMs": 0.0351
     },
     {
       "suite": "typographize:en_US",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.3483
+      "bestMs": 0.3238
     },
     {
       "suite": "typographize:en_US",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 3.5603
+      "bestMs": 3.4453
     },
     {
       "suite": "typographize:de",
       "label": "256 B",
       "bytes": 552,
-      "bestMs": 0.0033
+      "bestMs": 0.0034
     },
     {
       "suite": "typographize:de",
       "label": "1 KB",
       "bytes": 1105,
-      "bestMs": 0.0051
+      "bestMs": 0.0053
     },
     {
       "suite": "typographize:de",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0379
+      "bestMs": 0.0386
     },
     {
       "suite": "typographize:de",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.3337
+      "bestMs": 0.3394
     },
     {
       "suite": "typographize:de",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 3.4497
+      "bestMs": 3.3668
     },
     {
       "suite": "typographize:fr",
@@ -78,121 +79,121 @@
       "suite": "typographize:fr",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0327
+      "bestMs": 0.0308
     },
     {
       "suite": "typographize:fr",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.2902
+      "bestMs": 0.2835
     },
     {
       "suite": "typographize:fr",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 2.9466
+      "bestMs": 2.8329
     },
     {
       "suite": "typographize:pl",
       "label": "256 B",
       "bytes": 552,
-      "bestMs": 0.0035
+      "bestMs": 0.0032
     },
     {
       "suite": "typographize:pl",
       "label": "1 KB",
       "bytes": 1105,
-      "bestMs": 0.0055
+      "bestMs": 0.0053
     },
     {
       "suite": "typographize:pl",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0374
+      "bestMs": 0.036
     },
     {
       "suite": "typographize:pl",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.3358
+      "bestMs": 0.3318
     },
     {
       "suite": "typographize:pl",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 3.7627
+      "bestMs": 3.6447
     },
     {
       "suite": "method:trimWhitespace",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0025
+      "bestMs": 0.0024
     },
     {
       "suite": "method:trimWhitespace",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.023
+      "bestMs": 0.0227
     },
     {
       "suite": "method:trimWhitespace",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 0.2287
+      "bestMs": 0.217
     },
     {
       "suite": "method:formatQuotes",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0213
+      "bestMs": 0.0203
     },
     {
       "suite": "method:formatQuotes",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.1874
+      "bestMs": 0.1877
     },
     {
       "suite": "method:formatQuotes",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 1.9437
+      "bestMs": 1.9023
     },
     {
       "suite": "method:formatOpeningQuotes",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0097
+    },
+    {
+      "suite": "method:formatOpeningQuotes",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.092
+    },
+    {
+      "suite": "method:formatOpeningQuotes",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.8942
+    },
+    {
+      "suite": "method:formatClosingQuotes",
       "label": "10 KB",
       "bytes": 10506,
       "bestMs": 0.01
     },
     {
-      "suite": "method:formatOpeningQuotes",
-      "label": "100 KB",
-      "bytes": 102857,
-      "bestMs": 0.0922
-    },
-    {
-      "suite": "method:formatOpeningQuotes",
-      "label": "1 MB",
-      "bytes": 1049040,
-      "bestMs": 0.9405
-    },
-    {
-      "suite": "method:formatClosingQuotes",
-      "label": "10 KB",
-      "bytes": 10506,
-      "bestMs": 0.0093
-    },
-    {
       "suite": "method:formatClosingQuotes",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.0865
+      "bestMs": 0.0962
     },
     {
       "suite": "method:formatClosingQuotes",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 0.9159
+      "bestMs": 0.8912
     },
     {
       "suite": "method:fixApostroph",
@@ -204,13 +205,13 @@
       "suite": "method:fixApostroph",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.0202
+      "bestMs": 0.0191
     },
     {
       "suite": "method:fixApostroph",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 0.1952
+      "bestMs": 0.1906
     },
     {
       "suite": "method:fixEllipsis",
@@ -228,25 +229,25 @@
       "suite": "method:fixEllipsis",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 0.1149
+      "bestMs": 0.1154
     },
     {
       "suite": "method:fixAiryPunctuation",
       "label": "10 KB",
       "bytes": 10506,
-      "bestMs": 0.0071
+      "bestMs": 0.0068
     },
     {
       "suite": "method:fixAiryPunctuation",
       "label": "100 KB",
       "bytes": 102857,
-      "bestMs": 0.0665
+      "bestMs": 0.0642
     },
     {
       "suite": "method:fixAiryPunctuation",
       "label": "1 MB",
       "bytes": 1049040,
-      "bestMs": 0.676
+      "bestMs": 0.642
     }
   ]
 }

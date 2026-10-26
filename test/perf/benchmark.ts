@@ -47,6 +47,58 @@ const WARMUP_RUNS = 5
 const MEASURED_RUNS = 27
 
 /**
+ * Machine-speed calibration: a fixed, allocation-free workload (counting
+ * letter occurrences in a 1 MB string) that is independent of this package.
+ * Comparing its runtime against the value recorded with the baseline tells
+ * us how much slower or faster the current machine is, so the 1.5× threshold
+ * stays meaningful across CI runners and developer machines.
+ */
+export async function runCalibration (): Promise<number> {
+  const haystack = 'lorem ipsum dolor sit amet consectetur adipiscing elit '.repeat(20_000)
+  const needles = ['l', 'o', 'e', 't', 's']
+  const durations: number[] = []
+
+  for (let i = 0; i < 5; i++) {
+    const start = performance.now()
+    let checksum = 0
+
+    for (const needle of needles) {
+      let index = haystack.indexOf(needle)
+
+      while (index !== -1) {
+        checksum += index
+        index = haystack.indexOf(needle, index + 1)
+      }
+    }
+
+    durations.push(performance.now() - start)
+
+    if (checksum < 0) console.log(checksum) // defeat dead-code elimination
+  }
+
+  return Math.min(...durations)
+}
+
+/** Relative threshold for PR checks. */
+export const ALLOWED_REGRESSION_FACTOR = 1.5
+
+/**
+ * Baselines are recorded on one machine but checked on many. Scale the limit
+ * by the ratio of current vs recorded calibration so the 1.5× rule measures
+ * code regressions, not hardware differences.
+ */
+export function computeLimit (
+  entry: { bestMs: number },
+  calibrationReference: number,
+  calibrationCurrent: number,
+  floorMs = 0.15
+): number {
+  const ratio = calibrationCurrent / calibrationReference
+
+  return Math.max(entry.bestMs * ALLOWED_REGRESSION_FACTOR * ratio, floorMs * ratio)
+}
+
+/**
  * Build a sample string of at least `targetBytes` bytes by repeating the
  * English sample text. Quotes, ellipses, apostrophes and whitespace issues
  * recur throughout, so every pass of the pipeline has work to do.
