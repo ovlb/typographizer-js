@@ -1,4 +1,6 @@
-export default {
+import type { QuoteSet } from '../index.ts'
+
+const quotesets: Record<number, QuoteSet> = {
   0: {
     openingDouble: `“`,
     closingDouble: `”`,
@@ -48,3 +50,5 @@ export default {
     closingSingle: `”`
   }
 }
+
+export default quotesets

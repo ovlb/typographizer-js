@@ -1,5 +1,17 @@
-import supportedLanguages from './data/supportedLanguages'
-import quotesets from './data/quotesets'
+import supportedLanguages from './data/supportedLanguages.ts'
+import quotesets from './data/quotesets.ts'
+
+export interface QuoteSet {
+  openingDouble: string
+  closingDouble: string
+  openingSingle: string
+  closingSingle: string
+}
+
+export interface Language {
+  code: string
+  set: number
+}
 
 /**
  * Typographizer. Your friendly helper to correct common typographic mistakes.
@@ -16,11 +28,15 @@ import quotesets from './data/quotesets'
  * @license MIT
  */
 export default class TypographizerJS {
-  constructor (language) {
+  options!: { characterRange: string }
+  language!: Language
+  quotes!: QuoteSet
+
+  constructor (language?: string) {
     const userLanguage = language ? supportedLanguages.find(l => l.code === language) : false
 
     if (language && !userLanguage) {
-      return new Error(`Language «${language}» is not supported.`)
+      return new Error(`Language «${language}» is not supported.`) as unknown as TypographizerJS
     }
 
     this.options = {
@@ -43,7 +59,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>} The formatted string
    * @memberof TypographizerJS
    */
-  async typographize (string) {
+  async typographize (string: string): Promise<string> {
     return this.trimWhitespace(string)
       .then((str) => this.formatQuotes(str))
       .then((str) => this.fixApostroph(str))
@@ -59,7 +75,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>} str with all occurences of wrong apostrophes replaced
    * @memberof TypographizerJS
    */
-  async fixApostroph (str) {
+  async fixApostroph (str: string): Promise<string> {
     const { characterRange } = this.options
     const find = new RegExp(`(?<=[${characterRange}])(['\u0300\u0301´])(?=[${characterRange}])`, 'gmiu')
 
@@ -74,7 +90,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>}
    * @memberof TypographizerJS
    */
-  async fixEllipsis (str) {
+  async fixEllipsis (str: string): Promise<string> {
     return str.replace(/(\.{3})/gmiu, '…')
   }
 
@@ -83,11 +99,11 @@ export default class TypographizerJS {
    *
    * Regexr example: https://regexr.com/4he5a
    *
-   * @param {*} str
+   * @param {String} str
    * @returns
    * @memberof TypographizerJS
    */
-  async fixAiryPunctuation (str) {
+  async fixAiryPunctuation (str: string): Promise<string> {
     if (this.language.code === 'fr') return str
 
     const airy = /( )[.,;?!]{1}(?= *)/gimu
@@ -104,7 +120,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>}
    * @memberof TypographizerJS
    */
-  async trimWhitespace (str) {
+  async trimWhitespace (str: string): Promise<string> {
     return str.trim().replace(/\u0020{2,}/gmiu, ' ')
   }
 
@@ -116,7 +132,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>}
    * @memberof TypographizerJS
    */
-  async formatQuotes (str) {
+  async formatQuotes (str: string): Promise<string> {
     return this.formatOpeningQuotes(str).then((str) => this.formatClosingQuotes(str))
   }
 
@@ -128,7 +144,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>} The formatted string
    * @memberof TypographizerJS
    */
-  async formatOpeningQuotes (str) {
+  async formatOpeningQuotes (str: string): Promise<string> {
     const { openingDouble, openingSingle } = this.quotes
     const { characterRange } = this.options
     // Match all " that are followed by any letter from the Basic Latin to Greek Extended character sets
@@ -150,7 +166,7 @@ export default class TypographizerJS {
    * @returns {Promise<String>}
    * @memberof TypographizerJS
    */
-  async formatClosingQuotes (str) {
+  async formatClosingQuotes (str: string): Promise<string> {
     const { closingDouble, closingSingle } = this.quotes
 
     const closingDoubleQuote = /(?<!\d)"(?=[\s,.])(?!( [a-z]+=))|("$)/gimu

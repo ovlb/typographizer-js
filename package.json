@@ -2,14 +2,16 @@
   "name": "typographizer-js",
   "version": "0.5.1",
   "description": "A script to fix typographic errors",
-  "main": "dist/index.umd.js",
+  "type": "module",
+  "main": "./dist/index.umd.cjs",
   "scripts": {
-    "ci": "npm run test:report && npm run build",
-    "build": "rollup -c --environment BUILD:production",
     "test": "ava",
     "test:watch": "ava --watch",
-    "test:coverage": "nyc ava --reporter=text-lcov",
-    "test:report": "nyc ava && nyc report --reporter=text-lcov > coverage.lcov"
+    "test:coverage": "c8 ava",
+    "build": "tsc -p tsconfig.build.json && rollup -c",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run lint && npm run typecheck && npm run test:coverage && npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,7 @@
     "email": "o@ovl.design"
   },
   "engines": {
-    "node": "^8.12.0"
+    "node": "^22.20.0 || >=24"
   },
   "license": "MIT",
   "bugs": {
@@ -34,28 +36,27 @@
   },
   "homepage": "https://github.com/ovlb/typographizer-js#readme",
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
-    "ava": "^2.1.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.0.0",
-    "eslint-config-standard": "^13.0.1",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^9.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "esm": "^3.2.4",
-    "nyc": "^14.1.0",
-    "rollup": "^1.25.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-cleaner": "^1.0.0",
-    "rollup-plugin-filesize": "^6.0.1"
+    "ava": "^8.1.2",
+    "c8": "^12.0.0",
+    "eslint": "^10.13.0",
+    "neostandard": "^0.14.1",
+    "rollup": "^4.65.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1"
   },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "files": [
-    "dist",
-    "source"
-  ],
-  "dependencies": {}
+    "dist"
+  ]
 }

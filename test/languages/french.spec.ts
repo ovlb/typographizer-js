@@ -1,7 +1,7 @@
 import test from 'ava'
-import TypographizerJS from '../../source'
+import TypographizerJS from '../../source/index.ts'
 
-let Typographizer
+let Typographizer: TypographizerJS
 
 test.beforeEach(() => {
   Typographizer = new TypographizerJS('fr')

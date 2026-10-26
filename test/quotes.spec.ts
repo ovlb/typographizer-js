@@ -1,14 +1,14 @@
 import test from 'ava'
-import TypographizerJS from '../source'
+import TypographizerJS from '../source/index.ts'
 
-import exampleEn from './__samples__/en'
-import footInch from './__samples__/foot-inch'
-import html from './__samples__/html'
+import exampleEn from './__samples__/en.ts'
+import footInch from './__samples__/foot-inch.ts'
+import html from './__samples__/html.ts'
 
-let Typographizer
-let replaced
+let Typographizer: TypographizerJS
+let replaced: string
 
-test.beforeEach(async (t) => {
+test.beforeEach(async (_t) => {
   Typographizer = new TypographizerJS('en_US')
   replaced = await Typographizer.formatQuotes(exampleEn)
 })
