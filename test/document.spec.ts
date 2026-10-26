@@ -29,6 +29,21 @@ test('typographize preserves the document structure around code segments', async
   t.true(replaced.includes('\n\n```js\n'))
 })
 
+test('typographize handles documents that start or chain code segments', async (t) => {
+  const Typographizer = new TypographizerJS()
+
+  // Leading fence, adjacent fences, trailing fence: every prose slot that
+  // String.split() fills with '' must stay empty and odd indexes stay code
+  const leading = '```js\nconst a = "b";\n```\nProse "here".'
+  t.is(await Typographizer.typographize(leading), '```js\nconst a = "b";\n```\nProse “here”.')
+
+  const adjacent = '```js\nconst a = 1;\n```' + '```css\nbody { color: red }\n```\ntail "here".'
+  t.is(await Typographizer.typographize(adjacent), '```js\nconst a = 1;\n```' + '```css\nbody { color: red }\n```\ntail “here”.')
+
+  const trailing = 'Prose "here".\n```js\nconst a = 1;\n```'
+  t.is(await Typographizer.typographize(trailing), 'Prose “here”.\n```js\nconst a = 1;\n```')
+})
+
 test('typographize keeps its plain-string behavior when no code segments exist', async (t) => {
   const Typographizer = new TypographizerJS()
   const replaced = await Typographizer.typographize(html)
