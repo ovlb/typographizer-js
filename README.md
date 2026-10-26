@@ -109,14 +109,16 @@ All these methods return Promises. Usage instructions for `typographize` usage a
 
 ## Performance
 
-Every pull request is checked against a recorded baseline. The benchmark measures
+The benchmark measures
 
 - the full `typographize()` pipeline for English and non-English languages (`en_US`, `de`, `fr`, `pl`) at 256 B, 1 KB, 10 KB, 100 KB and 1 MB, and
 - every public method individually at 10 KB, 100 KB and 1 MB.
 
-Each measurement is the **best of 27 runs** after 5 warmups: GC pauses and scheduler noise only ever add upward error, so the minimum is the most reproducible estimate of actual cost. A test fails when a suite gets more than **1.5× slower than the baseline** (with a 0.15 ms floor, because timings below ~0.1 ms are jitter).
+Each measurement is the **best of 27 runs** after 5 warmups: GC pauses and scheduler noise only ever add upward error, so the minimum is the most reproducible estimate of actual cost.
 
-Latest run (2026-10-26, Node v26.12.1, Apple M5, macOS 26):
+Every pull request is gated by an **A/B comparison against `main`**: the benchmark runs both checkouts back-to-back on the same machine, interleaved per suite so both sides share the same noise window, and fails when any suite is more than **1.5× slower than `main`**. Hardware and load differences cancel out this way — absolute thresholds were tried first and proved unreliable: they break across machines, across CI runners (whose timing varies up to 4× run to run) and on your own machine the moment something else eats CPU.
+
+Latest numbers (2026-10-26, Node v26.12.1, Apple M5, macOS 26 — absolute values vary with the machine, the 1.5× ratio is what gets enforced):
 
 Full pipeline (`typographize()`), best run in ms:
 
@@ -143,8 +145,9 @@ Single methods (en_US), best run in ms:
 To run the benchmark yourself:
 
 ```bash
-npm run bench          # print current numbers
-npm run bench:update   # re-record the baseline after intentional changes
+npm run bench             # print absolute numbers (reporting only)
+npm run bench:compare     # A/B against main; creates a temporary worktree
+npm run bench:compare -- path/to/other-checkout  # A/B against any checkout
 ```
 
 ## Supported languages

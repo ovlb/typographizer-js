@@ -33,7 +33,8 @@ const ROUNDS = 3
 /** Measurements below this reference time are noise; their ratio is meaningless. */
 const MIN_REFERENCE_MS = 0.1
 
-const FACTOR = 1.5
+/** PR gate: a suite may not exceed this factor of its main counterpart. */
+export const FACTOR = 1.5
 
 export function evaluateComparison (
   rows: Array<{ suite: string, label: string, ratio?: number, referenceMs: number, currentMs: number }>,

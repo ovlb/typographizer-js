@@ -1,15 +1,12 @@
 #!/usr/bin/env node
 /**
- * Benchmark CLI.
- *
- * `node test/perf/cli.ts` prints the current benchmark results.
- * `node test/perf/cli.ts --update` additionally overwrites test/perf/baseline.json.
+ * Benchmark CLI. `npm run bench` prints current absolute numbers.
+ * These are for reporting only — the gate is the A/B comparison
+ * (npm run bench:compare), which is robust to machine and load differences.
  */
-import { writeFileSync } from 'node:fs'
-import { runAllBenchmarks, runCalibration } from './benchmark.ts'
+import { runAllBenchmarks } from './benchmark.ts'
 
-const updateBaseline = process.argv.includes('--update')
-const [results, calibrationMs] = await Promise.all([runAllBenchmarks(), runCalibration()])
+const results = await runAllBenchmarks()
 
 const labelWidth = 'size'.length
 const bytesWidth = 'bytes'.length
@@ -24,21 +21,4 @@ for (const suite of suites) {
   for (const { label, bytes, bestMs } of rows) {
     console.log(`${label.padEnd(labelWidth)}  ${String(bytes).padStart(bytesWidth)}  ${bestMs.toFixed(2)}`)
   }
-}
-
-if (updateBaseline) {
-  const baseline = {
-    recordedAt: new Date().toISOString(),
-    node: process.version,
-    calibrationMs: Number(calibrationMs.toFixed(4)),
-    entries: results.map(({ suite, label, bytes, bestMs }) => ({
-      suite,
-      label,
-      bytes,
-      bestMs: Number(bestMs.toFixed(4))
-    }))
-  }
-
-  writeFileSync(new URL('./baseline.json', import.meta.url), `${JSON.stringify(baseline, null, 2)}\n`)
-  console.log('\nbaseline.json updated')
 }

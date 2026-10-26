@@ -29,8 +29,6 @@ jobs:
         with:
           ref: main
           path: main-ref
-      - run: npm ci
-        working-directory: main-ref
       - run: node test/perf/compare-cli.ts main-ref
       - run: npm run build
       - uses: actions/upload-artifact@v7.0.2
