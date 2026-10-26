@@ -86,13 +86,20 @@ async function compareSuite (
   await currentOperation(input)
   await referenceOperation(input)
 
-  // Alternate sides per round so both share the same host-noise window.
+  // Alternate which side runs first per round so both share the same
+  // host-noise windows. Fixed ordering biases the result: whichever batch
+  // runs right after the other side's allocations eats the GC pause.
   let currentMs = Infinity
   let referenceMs = Infinity
 
   for (let round = 0; round < ROUNDS; round++) {
-    currentMs = Math.min(currentMs, await fastestBatch(currentOperation, input, ROUND_BATCH_RUNS))
-    referenceMs = Math.min(referenceMs, await fastestBatch(referenceOperation, input, ROUND_BATCH_RUNS))
+    if (round % 2 === 0) {
+      currentMs = Math.min(currentMs, await fastestBatch(currentOperation, input, ROUND_BATCH_RUNS))
+      referenceMs = Math.min(referenceMs, await fastestBatch(referenceOperation, input, ROUND_BATCH_RUNS))
+    } else {
+      referenceMs = Math.min(referenceMs, await fastestBatch(referenceOperation, input, ROUND_BATCH_RUNS))
+      currentMs = Math.min(currentMs, await fastestBatch(currentOperation, input, ROUND_BATCH_RUNS))
+    }
   }
 
   return {

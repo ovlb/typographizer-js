@@ -23,13 +23,6 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test:coverage
-      # Performance gate: benchmark this PR back-to-back against main on the
-      # same runner, interleaved per suite, so hardware noise cancels out.
-      - uses: actions/checkout@v7.0.1
-        with:
-          ref: main
-          path: main-ref
-      - run: node test/perf/compare-cli.ts main-ref
       - run: npm run build
       - uses: actions/upload-artifact@v7.0.2
         if: matrix.node == 26
@@ -37,3 +30,22 @@ jobs:
           name: coverage
           path: coverage
           if-no-files-found: ignore
+
+  performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26
+          cache: npm
+      - run: npm ci
+      # Unit-level benchmark tests (correctness of the measurements).
+      - run: npm run test:perf
+      # Performance gate: benchmark this branch back-to-back against main on
+      # the same runner, interleaved per suite, so hardware noise cancels out.
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+          path: main-ref
+      - run: node test/perf/compare-cli.ts main-ref
