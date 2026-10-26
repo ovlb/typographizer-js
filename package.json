@@ -8,6 +8,8 @@
     "test": "ava",
     "test:watch": "ava --watch",
     "test:coverage": "c8 ava",
+    "bench": "node test/perf/cli.ts",
+    "bench:update": "node test/perf/cli.ts --update",
     "build": "tsc -p tsconfig.build.json && rollup -c",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -36,6 +38,7 @@
   },
   "homepage": "https://github.com/ovlb/typographizer-js#readme",
   "devDependencies": {
+    "@types/node": "^26.6.5",
     "ava": "^8.1.2",
     "c8": "^12.0.0",
     "eslint": "^10.13.0",

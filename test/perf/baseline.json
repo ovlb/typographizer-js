@@ -1,0 +1,252 @@
+{
+  "recordedAt": "2026-10-26T21:25:42.097Z",
+  "node": "v26.12.1",
+  "entries": [
+    {
+      "suite": "typographize:en_US",
+      "label": "256 B",
+      "bytes": 552,
+      "bestMs": 0.0046
+    },
+    {
+      "suite": "typographize:en_US",
+      "label": "1 KB",
+      "bytes": 1105,
+      "bestMs": 0.0056
+    },
+    {
+      "suite": "typographize:en_US",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0387
+    },
+    {
+      "suite": "typographize:en_US",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.3483
+    },
+    {
+      "suite": "typographize:en_US",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 3.5603
+    },
+    {
+      "suite": "typographize:de",
+      "label": "256 B",
+      "bytes": 552,
+      "bestMs": 0.0033
+    },
+    {
+      "suite": "typographize:de",
+      "label": "1 KB",
+      "bytes": 1105,
+      "bestMs": 0.0051
+    },
+    {
+      "suite": "typographize:de",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0379
+    },
+    {
+      "suite": "typographize:de",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.3337
+    },
+    {
+      "suite": "typographize:de",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 3.4497
+    },
+    {
+      "suite": "typographize:fr",
+      "label": "256 B",
+      "bytes": 552,
+      "bestMs": 0.0029
+    },
+    {
+      "suite": "typographize:fr",
+      "label": "1 KB",
+      "bytes": 1105,
+      "bestMs": 0.0045
+    },
+    {
+      "suite": "typographize:fr",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0327
+    },
+    {
+      "suite": "typographize:fr",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.2902
+    },
+    {
+      "suite": "typographize:fr",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 2.9466
+    },
+    {
+      "suite": "typographize:pl",
+      "label": "256 B",
+      "bytes": 552,
+      "bestMs": 0.0035
+    },
+    {
+      "suite": "typographize:pl",
+      "label": "1 KB",
+      "bytes": 1105,
+      "bestMs": 0.0055
+    },
+    {
+      "suite": "typographize:pl",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0374
+    },
+    {
+      "suite": "typographize:pl",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.3358
+    },
+    {
+      "suite": "typographize:pl",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 3.7627
+    },
+    {
+      "suite": "method:trimWhitespace",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0025
+    },
+    {
+      "suite": "method:trimWhitespace",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.023
+    },
+    {
+      "suite": "method:trimWhitespace",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.2287
+    },
+    {
+      "suite": "method:formatQuotes",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0213
+    },
+    {
+      "suite": "method:formatQuotes",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.1874
+    },
+    {
+      "suite": "method:formatQuotes",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 1.9437
+    },
+    {
+      "suite": "method:formatOpeningQuotes",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.01
+    },
+    {
+      "suite": "method:formatOpeningQuotes",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.0922
+    },
+    {
+      "suite": "method:formatOpeningQuotes",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.9405
+    },
+    {
+      "suite": "method:formatClosingQuotes",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0093
+    },
+    {
+      "suite": "method:formatClosingQuotes",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.0865
+    },
+    {
+      "suite": "method:formatClosingQuotes",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.9159
+    },
+    {
+      "suite": "method:fixApostroph",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0023
+    },
+    {
+      "suite": "method:fixApostroph",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.0202
+    },
+    {
+      "suite": "method:fixApostroph",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.1952
+    },
+    {
+      "suite": "method:fixEllipsis",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0012
+    },
+    {
+      "suite": "method:fixEllipsis",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.0116
+    },
+    {
+      "suite": "method:fixEllipsis",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.1149
+    },
+    {
+      "suite": "method:fixAiryPunctuation",
+      "label": "10 KB",
+      "bytes": 10506,
+      "bestMs": 0.0071
+    },
+    {
+      "suite": "method:fixAiryPunctuation",
+      "label": "100 KB",
+      "bytes": 102857,
+      "bestMs": 0.0665
+    },
+    {
+      "suite": "method:fixAiryPunctuation",
+      "label": "1 MB",
+      "bytes": 1049040,
+      "bestMs": 0.676
+    }
+  ]
+}

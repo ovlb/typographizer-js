@@ -21,7 +21,7 @@ The JS version is inspired by the [Typographizer](https://github.com/frankrausch
 
 This package uses RegExp lookbehinds. These are supported in evergreen browsers and Node ≥ 16 (out of the box).
 
-You should not use this in the browser (probably). Formatting and reinserting long strings is a mayor performance hit.
+You can use this in the browser, but know what you’re signing up for: formatting and reinserting long strings costs time. Measured numbers live in the [Performance](#performance) section below.
 
 In general, this is more of a fun project. So, use with caution.
 
@@ -106,6 +106,46 @@ All these methods return Promises. Usage instructions for `typographize` usage a
 | formatClosingQuotes(str) | Format all closing quotes
 | trimWhitespace(str) | Remove whitespace from the beginning and end of a string, replaces multiple spaces with a single one
 | typographize(str) | Takes a string and applies all optimizations |
+
+## Performance
+
+Every pull request is checked against a recorded baseline. The benchmark measures
+
+- the full `typographize()` pipeline for English and non-English languages (`en_US`, `de`, `fr`, `pl`) at 256 B, 1 KB, 10 KB, 100 KB and 1 MB, and
+- every public method individually at 10 KB, 100 KB and 1 MB.
+
+Each measurement is the **best of 27 runs** after 5 warmups: GC pauses and scheduler noise only ever add upward error, so the minimum is the most reproducible estimate of actual cost. A test fails when a suite gets more than **1.5× slower than the baseline** (with a 0.15 ms floor, because timings below ~0.1 ms are jitter).
+
+Latest run (2026-10-26, Node v26.12.1, Apple M5, macOS 26):
+
+Full pipeline (`typographize()`), best run in ms:
+
+| Size | en_US | de | fr | pl |
+| --- | --- | --- | --- | --- |
+| 256 B | 0.00 | 0.00 | 0.00 | 0.01 |
+| 1 KB | 0.01 | 0.01 | 0.00 | 0.01 |
+| 10 KB | 0.04 | 0.04 | 0.04 | 0.04 |
+| 100 KB | 0.35 | 0.36 | 0.30 | 0.36 |
+| 1 MB | 3.56 | 3.60 | 3.01 | 3.59 |
+
+Single methods (en_US), best run in ms:
+
+| Method | 10 KB | 100 KB | 1 MB |
+| --- | --- | --- | --- |
+| trimWhitespace | 0.00 | 0.02 | 0.24 |
+| formatQuotes | 0.02 | 0.20 | 2.02 |
+| formatOpeningQuotes | 0.01 | 0.10 | 0.95 |
+| formatClosingQuotes | 0.01 | 0.09 | 0.91 |
+| fixApostroph | 0.00 | 0.02 | 0.20 |
+| fixEllipsis | 0.00 | 0.01 | 0.13 |
+| fixAiryPunctuation | 0.01 | 0.07 | 0.69 |
+
+To run the benchmark yourself:
+
+```bash
+npm run bench          # print current numbers
+npm run bench:update   # re-record the baseline after intentional changes
+```
 
 ## Supported languages
 
