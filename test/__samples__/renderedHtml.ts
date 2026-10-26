@@ -1,4 +1,4 @@
-const renderedHtml: string = `<p>He said "stop..." and left.</p>
+const renderedHtml = `<p>He said "stop..." and left.</p>
 <pre><code>if (a === "b") { return "it's..." }
 </code></pre>
 <p>Call <code>"helpers"</code> when ready. It's "fine"</p>
@@ -6,7 +6,7 @@ const renderedHtml: string = `<p>He said "stop..." and left.</p>
 
 export default renderedHtml
 
-export const wellFormattedRenderedHtml: string = `<p>He said “stop…” and left.</p>
+export const wellFormattedRenderedHtml = `<p>He said “stop…” and left.</p>
 <pre><code>if (a === "b") { return "it's..." }
 </code></pre>
 <p>Call <code>"helpers"</code> when ready. It’s “fine”</p>
