@@ -1,6 +1,14 @@
 import supportedLanguages from './data/supportedLanguages.ts'
 import quotesets from './data/quotesets.ts'
 
+/**
+ * Matches code segments in Markdown and HTML documents: fenced code blocks
+ * (``` and ~~~), inline code spans (`…`) as well as <pre> and <code> elements.
+ * When used with String.split() and its capturing group, the odd-indexed
+ * results are code segments.
+ */
+const codeSegmentPattern = /(```[\s\S]*?```|~~~[\s\S]*?~~~|`[^`\n]+`|<pre\b[\s\S]*?<\/pre>|<code\b[\s\S]*?<\/code>)/gi
+
 export interface QuoteSet {
   openingDouble: string
   closingDouble: string
@@ -60,11 +68,31 @@ export default class TypographizerJS {
    * @memberof TypographizerJS
    */
   async typographize (string: string): Promise<string> {
-    return this.trimWhitespace(string)
-      .then((str) => this.formatQuotes(str))
-      .then((str) => this.fixApostroph(str))
-      .then((str) => this.fixEllipsis(str))
-      .then((str) => this.fixAiryPunctuation(str))
+    const segments = string.split(codeSegmentPattern)
+
+    // No code segments found: behave exactly as before, including trimming
+    if (segments.length === 1) {
+      return this.trimWhitespace(string)
+        .then((str) => this.formatQuotes(str))
+        .then((str) => this.fixApostroph(str))
+        .then((str) => this.fixEllipsis(str))
+        .then((str) => this.fixAiryPunctuation(str))
+    }
+
+    // With code segments present we only touch the prose in between and leave
+    // the boundaries alone, since collapsing whitespace would destroy the
+    // structure of Markdown documents
+    const processed = await Promise.all(segments.map(async (segment, index) => {
+      // String.split() with a capturing regex puts the matches at odd indexes
+      if (index % 2 === 1) return segment
+
+      return this.formatQuotes(segment)
+        .then((str) => this.fixApostroph(str))
+        .then((str) => this.fixEllipsis(str))
+        .then((str) => this.fixAiryPunctuation(str))
+    }))
+
+    return processed.join('')
   }
 
   /**
@@ -169,8 +197,8 @@ export default class TypographizerJS {
   async formatClosingQuotes (str: string): Promise<string> {
     const { closingDouble, closingSingle } = this.quotes
 
-    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])(?!( [a-z]+=))|("$)/gimu
-    const closingSingleQuote = new RegExp(`(?<!\\d)'(?=[\\s,."${closingDouble}])`, 'gimu')
+    const closingDoubleQuote = /(?<!\d)"(?=[\s,.])(?!( [a-z]+=))|(?<!\d)"(?=<)|("$)/gimu
+    const closingSingleQuote = new RegExp(`(?<!\\d)'(?=[\\s,."${closingDouble}])|(?<!\\d)'(?=<)`, 'gimu')
 
     return str
       .replace(closingDoubleQuote, closingDouble)
