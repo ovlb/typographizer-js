@@ -1,9 +1,0 @@
-language: node_js
-node_js:
- - "10"
-before_script:
-  - npm install -g codecov
-script:
-  - npm run-script ci
-  - codecov
-cache: npm

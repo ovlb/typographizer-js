@@ -10,7 +10,8 @@
     "test:coverage": "c8 ava",
     "build": "tsc -p tsconfig.build.json && rollup -c",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run lint && npm run typecheck && npm run test:coverage && npm run build"
   },
   "repository": {
     "type": "git",
