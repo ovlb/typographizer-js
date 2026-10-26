@@ -1,7 +1,7 @@
 import test from 'ava'
-import TypographizerJS from '../source'
+import TypographizerJS from '../source/index.js'
 
-import example from './__samples__/ellipsis'
+import example from './__samples__/ellipsis.js'
 
 let Typographizer
 let replaced

@@ -1,5 +1,5 @@
-import supportedLanguages from './data/supportedLanguages'
-import quotesets from './data/quotesets'
+import supportedLanguages from './data/supportedLanguages.js'
+import quotesets from './data/quotesets.js'
 
 /**
  * Typographizer. Your friendly helper to correct common typographic mistakes.

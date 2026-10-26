@@ -1,7 +1,7 @@
 import test from 'ava'
-import TypographizerJS from '../source'
+import TypographizerJS from '../source/index.js'
 
-import exampleEn from './__samples__/en'
+import exampleEn from './__samples__/en.js'
 
 test('en_US', async (t) => {
   const Typographizer = new TypographizerJS()

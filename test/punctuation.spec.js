@@ -1,7 +1,7 @@
 import test from 'ava'
-import TypographizerJS from '../source'
+import TypographizerJS from '../source/index.js'
 
-import { airyPunctuation } from './__samples__/punctuation'
+import { airyPunctuation } from './__samples__/punctuation.js'
 
 let Typographizer
 let replaced

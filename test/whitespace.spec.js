@@ -1,12 +1,12 @@
-import test, { beforeEach } from 'ava'
-import TypographizerJS from '../source'
+import test from 'ava'
+import TypographizerJS from '../source/index.js'
 
-import example from './__samples__/whitespace'
+import example from './__samples__/whitespace.js'
 
 let Typographizer
 let replaced
 
-beforeEach(async () => {
+test.beforeEach(async () => {
   Typographizer = new TypographizerJS()
   replaced = await Typographizer.trimWhitespace(example)
 })

@@ -1,5 +1,5 @@
 import test from 'ava'
-import TypographizerJS from '../../source'
+import TypographizerJS from '../../source/index.js'
 
 let Typographizer
 

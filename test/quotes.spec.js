@@ -1,9 +1,9 @@
 import test from 'ava'
-import TypographizerJS from '../source'
+import TypographizerJS from '../source/index.js'
 
-import exampleEn from './__samples__/en'
-import footInch from './__samples__/foot-inch'
-import html from './__samples__/html'
+import exampleEn from './__samples__/en.js'
+import footInch from './__samples__/foot-inch.js'
+import html from './__samples__/html.js'
 
 let Typographizer
 let replaced

@@ -1,5 +1,5 @@
 import test from 'ava'
-import quotesets from '../../source/data/quotesets'
+import quotesets from '../../source/data/quotesets.js'
 
 test('set 0', (t) => {
   t.deepEqual(quotesets[0], {
