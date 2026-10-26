@@ -7,23 +7,23 @@ import {
   runPipelineBenchmark
 } from './perf/benchmark.ts'
 
-test.serial('benchmark covers all documented text sizes', (t) => {
+test.serial('the benchmark size ladder spans 256 B to 1 MB', (t) => {
   t.deepEqual(Object.keys(SIZE_LABELS), ['256 B', '1 KB', '10 KB', '100 KB', '1 MB'])
 })
 
-test.serial('benchmark covers English and non-English languages', (t) => {
+test.serial('the benchmark language suite has English plus at least three other languages', (t) => {
   t.true(LANGUAGES.includes('en_US'))
   t.true(LANGUAGES.filter((language) => language !== 'en_US').length >= 3)
 })
 
-test.serial('benchmark covers every public pipeline method', (t) => {
+test.serial('the benchmark method list names every public pipeline method', (t) => {
   t.deepEqual(
     [...METHODS].sort(),
     ['fixAiryPunctuation', 'fixApostroph', 'fixEllipsis', 'formatClosingQuotes', 'formatOpeningQuotes', 'formatQuotes', 'trimWhitespace'].sort()
   )
 })
 
-test.serial('typographize preserves correctness on every language and size', async (t) => {
+test.serial('typographize() output stays typographically correct at every size and language', async (t) => {
   for (const language of LANGUAGES) {
     const results = await runPipelineBenchmark(language)
 
@@ -37,7 +37,7 @@ test.serial('typographize preserves correctness on every language and size', asy
   }
 })
 
-test.serial('every single method is benchmarked on pipeline sizes', async (t) => {
+test.serial('each public method is benchmarked at 10 KB, 100 KB and 1 MB', async (t) => {
   const results = await runMethodBenchmark()
   const covered = new Set(results.map((result) => result.method))
 
@@ -50,7 +50,7 @@ test.serial('every single method is benchmarked on pipeline sizes', async (t) =>
   }
 })
 
-test.serial('every single method preserves correctness on its sample', async (t) => {
+test.serial('each public method only changes what it is responsible for', async (t) => {
   const results = await runMethodBenchmark()
 
   for (const result of results) {
