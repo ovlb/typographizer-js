@@ -1,6 +1,6 @@
 import test from 'ava'
-import TypographizerJS from '../../source/index.js'
-import quotesets from '../../source/data/quotesets.js'
+import TypographizerJS from '../../source/index.ts'
+import quotesets from '../../source/data/quotesets.ts'
 
 test('set english quotes as default', (t) => {
   const Typographizer = new TypographizerJS()

@@ -1,12 +1,12 @@
 import test from 'ava'
-import TypographizerJS from '../source/index.js'
+import TypographizerJS from '../source/index.ts'
 
-import exampleEn from './__samples__/en.js'
-import footInch from './__samples__/foot-inch.js'
-import html from './__samples__/html.js'
+import exampleEn from './__samples__/en.ts'
+import footInch from './__samples__/foot-inch.ts'
+import html from './__samples__/html.ts'
 
-let Typographizer
-let replaced
+let Typographizer: TypographizerJS
+let replaced: string
 
 test.beforeEach(async (t) => {
   Typographizer = new TypographizerJS('en_US')

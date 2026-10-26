@@ -1,4 +1,6 @@
-export default [
+import type { Language } from '../index.ts'
+
+const supportedLanguages: Language[] = [
   { code: 'bs', set: 4 },
   { code: 'cs', set: 2 },
   { code: 'da', set: 2 },
@@ -26,3 +28,5 @@ export default [
   { code: 'sv', set: 4 },
   { code: 'sw', set: 0 }
 ]
+
+export default supportedLanguages

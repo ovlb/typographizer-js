@@ -1,74 +1,54 @@
-import test from 'ava'
-import quotesets from '../../source/data/quotesets.js'
+import type { QuoteSet } from '../index.ts'
 
-test('set 0', (t) => {
-  t.deepEqual(quotesets[0], {
+const quotesets: Record<number, QuoteSet> = {
+  0: {
     openingDouble: `“`,
     closingDouble: `”`,
     openingSingle: `‘`,
     closingSingle: `’`
-  })
-})
-
-test('set 1', (t) => {
-  t.deepEqual(quotesets[1], {
+  },
+  1: {
     openingDouble: `« `,
     closingDouble: ` »`,
     openingSingle: `‹ `,
     closingSingle: ` ›`
-  })
-})
-
-test('set 2', (t) => {
-  t.deepEqual(quotesets[2], {
+  },
+  2: {
     openingDouble: `„`,
     closingDouble: `“`,
     openingSingle: `‚`,
     closingSingle: `‘`
-  })
-})
-
-test('set 3', (t) => {
-  t.deepEqual(quotesets[3], {
+  },
+  3: {
     openingDouble: `«`,
     closingDouble: `»`,
     openingSingle: `‹`,
     closingSingle: `›`
-  })
-})
-
-test('set 4', (t) => {
-  t.deepEqual(quotesets[4], {
+  },
+  4: {
     openingDouble: `”`,
     closingDouble: `”`,
     openingSingle: `’`,
     closingSingle: `’`
-  })
-})
-
-test('set 5', (t) => {
-  t.deepEqual(quotesets[5], {
+  },
+  5: {
     openingDouble: `„`,
     closingDouble: `”`,
     openingSingle: `’`,
     closingSingle: `’`
-  })
-})
-
-test('set 6', (t) => {
-  t.deepEqual(quotesets[6], {
+  },
+  6: {
     openingDouble: `«`,
     closingDouble: `»`,
     openingSingle: `’`,
     closingSingle: `’`
-  })
-})
-
-test('set 7', (t) => {
-  t.deepEqual(quotesets[7], {
+  },
+  7: {
     openingDouble: `‘`,
     closingDouble: `’`,
     openingSingle: `“`,
     closingSingle: `”`
-  })
-})
+  }
+}
+
+export default quotesets

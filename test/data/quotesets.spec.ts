@@ -1,50 +1,74 @@
-export default {
-  0: {
+import test from 'ava'
+import quotesets from '../../source/data/quotesets.ts'
+
+test('set 0', (t) => {
+  t.deepEqual(quotesets[0], {
     openingDouble: `“`,
     closingDouble: `”`,
     openingSingle: `‘`,
     closingSingle: `’`
-  },
-  1: {
+  })
+})
+
+test('set 1', (t) => {
+  t.deepEqual(quotesets[1], {
     openingDouble: `« `,
     closingDouble: ` »`,
     openingSingle: `‹ `,
     closingSingle: ` ›`
-  },
-  2: {
+  })
+})
+
+test('set 2', (t) => {
+  t.deepEqual(quotesets[2], {
     openingDouble: `„`,
     closingDouble: `“`,
     openingSingle: `‚`,
     closingSingle: `‘`
-  },
-  3: {
+  })
+})
+
+test('set 3', (t) => {
+  t.deepEqual(quotesets[3], {
     openingDouble: `«`,
     closingDouble: `»`,
     openingSingle: `‹`,
     closingSingle: `›`
-  },
-  4: {
+  })
+})
+
+test('set 4', (t) => {
+  t.deepEqual(quotesets[4], {
     openingDouble: `”`,
     closingDouble: `”`,
     openingSingle: `’`,
     closingSingle: `’`
-  },
-  5: {
+  })
+})
+
+test('set 5', (t) => {
+  t.deepEqual(quotesets[5], {
     openingDouble: `„`,
     closingDouble: `”`,
     openingSingle: `’`,
     closingSingle: `’`
-  },
-  6: {
+  })
+})
+
+test('set 6', (t) => {
+  t.deepEqual(quotesets[6], {
     openingDouble: `«`,
     closingDouble: `»`,
     openingSingle: `’`,
     closingSingle: `’`
-  },
-  7: {
+  })
+})
+
+test('set 7', (t) => {
+  t.deepEqual(quotesets[7], {
     openingDouble: `‘`,
     closingDouble: `’`,
     openingSingle: `“`,
     closingSingle: `”`
-  }
-}
+  })
+})

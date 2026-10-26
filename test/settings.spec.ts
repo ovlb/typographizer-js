@@ -1,7 +1,7 @@
 import test from 'ava'
-import TypographizerJS from '../source/index.js'
+import TypographizerJS from '../source/index.ts'
 
-let Typographizer
+let Typographizer: TypographizerJS
 
 test.beforeEach(async (t) => {
   Typographizer = new TypographizerJS()
@@ -23,7 +23,7 @@ test('Can set language', (t) => {
 test('Returns an error if an unsupported language is set', (t) => {
   const TypographizerNoSupport = new TypographizerJS({
     language: 'css'
-  })
+  } as unknown as string)
 
   t.true(TypographizerNoSupport instanceof Error)
 })

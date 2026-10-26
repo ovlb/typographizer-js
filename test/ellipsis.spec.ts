@@ -1,10 +1,10 @@
 import test from 'ava'
-import TypographizerJS from '../source/index.js'
+import TypographizerJS from '../source/index.ts'
 
-import example from './__samples__/ellipsis.js'
+import example from './__samples__/ellipsis.ts'
 
-let Typographizer
-let replaced
+let Typographizer: TypographizerJS
+let replaced: string
 
 test.beforeEach(async (t) => {
   Typographizer = new TypographizerJS()

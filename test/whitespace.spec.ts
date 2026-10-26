@@ -1,10 +1,10 @@
 import test from 'ava'
-import TypographizerJS from '../source/index.js'
+import TypographizerJS from '../source/index.ts'
 
-import example from './__samples__/whitespace.js'
+import example from './__samples__/whitespace.ts'
 
-let Typographizer
-let replaced
+let Typographizer: TypographizerJS
+let replaced: string
 
 test.beforeEach(async () => {
   Typographizer = new TypographizerJS()
