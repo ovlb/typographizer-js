@@ -1,13 +1,11 @@
-<img width="240" height="240" src="https://raw.githubusercontent.com/ovlb/typographizer-js/master/img/logo-8c.png" alt="Logo of Typographizer JS">
+<img width="240" height="240" src="https://raw.githubusercontent.com/ovlb/typographizer-js/main/img/logo-8c.png" alt="Logo of Typographizer JS">
 
 # TypographizerJS
-
 
 <!-- Shortcode definitions at the bottom of the file -->
 
 [![Published version][npm-img]][npm-url]
 [![Build Status][ci-img]][ci-url]
-
 
 Typographizer automates ~~everything~~ some things you don’t want (or need) to know about typography.
 
@@ -16,7 +14,6 @@ Typographizer automates ~~everything~~ some things you don’t want (or need) to
 ## Acknowledgement
 
 The JS version is inspired by the [Typographizer](https://github.com/frankrausch/Typographizer) by [Frank Rausch](https://frankrausch.com/ "Homepage of Frank Rausch"), written in Swift. 🙇‍
-
 
 ## Usage
 
@@ -145,9 +142,6 @@ This list is missing Japanese and Hebrew, which are supported by Typographizer. 
 <!-- Badges shortcodes -->
 [npm-img]: https://img.shields.io/npm/v/typographizer-js.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/typographizer-js
-
-[codecov-url]: https://codecov.io/gh/ovlb/typographizer-js
-[codecov-img]: https://codecov.io/gh/ovlb/typographizer-js/branch/master/graph/badge.svg
 
 [ci-url]: https://github.com/ovlb/typographizer-js/actions/workflows/ci.yml
 [ci-img]: https://github.com/ovlb/typographizer-js/actions/workflows/ci.yml/badge.svg
