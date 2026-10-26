@@ -5,9 +5,11 @@
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "scripts": {
-    "test": "ava",
+    "test": "ava && npm run test:perf",
+    "test:perf": "ava --config ava.perf.config.js",
+    "test:perf:watch": "ava --config ava.perf.config.js --watch",
     "test:watch": "ava --watch",
-    "test:coverage": "c8 ava",
+    "test:coverage": "c8 ava && npm run test:perf",
     "bench": "node test/perf/cli.ts",
     "bench:update": "node test/perf/cli.ts --update",
     "build": "tsc -p tsconfig.build.json && rollup -c",

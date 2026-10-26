@@ -1,8 +1,7 @@
 export default {
-  files: ['test/**/*.spec.ts'],
-  extensions: ['ts'],
-  // Benchmark tests measure wall-clock time. Ava runs test files (and tests
-  // within files) concurrently by default, which steals CPU from the worker
-  // running benchmarks and inflates the measurements. Keep everything serial.
-  concurrency: 1
+  // Benchmark specs are excluded here and run serially via ava.perf.config.js
+  // (see the "test:perf" script): they measure wall-clock time and must not
+  // share CPU with other workers.
+  files: ['test/**/*.spec.ts', '!test/perf/**', '!test/performance.spec.ts'],
+  extensions: ['ts']
 }

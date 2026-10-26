@@ -47,28 +47,28 @@ const WARMUP_RUNS = 5
 const MEASURED_RUNS = 27
 
 /**
- * Machine-speed calibration: a fixed, allocation-free workload (counting
- * letter occurrences in a 1 MB string) that is independent of this package.
- * Comparing its runtime against the value recorded with the baseline tells
- * us how much slower or faster the current machine is, so the 1.5× threshold
- * stays meaningful across CI runners and developer machines.
+ * Machine-speed calibration: a fixed regex workload with lookbehind, the same
+ * cost driver as this package, but independent of its code. Comparing its
+ * runtime against the value recorded with the baseline tells us how much
+ * slower or faster the current machine (and Node version) is, so the 1.5×
+ * threshold stays meaningful across CI runners and developer machines.
+ *
+ * Plain indexOf-based calibration was not enough: Node 24's regex engine is
+ * disproportionately slower than Node 26's, which undercorrected the limits.
  */
 export async function runCalibration (): Promise<number> {
-  const haystack = 'lorem ipsum dolor sit amet consectetur adipiscing elit '.repeat(20_000)
-  const needles = ['l', 'o', 'e', 't', 's']
+  // ~1 MB of prose-like text with rare apostrophes to find.
+  const haystack = 'The_quick_brown_fox '.repeat(52_428) + " it's"
+  const pattern = /(?<=[a-z])'(?!')/g
   const durations: number[] = []
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 9; i++) {
     const start = performance.now()
     let checksum = 0
+    let match: RegExpExecArray | null
 
-    for (const needle of needles) {
-      let index = haystack.indexOf(needle)
-
-      while (index !== -1) {
-        checksum += index
-        index = haystack.indexOf(needle, index + 1)
-      }
+    while ((match = pattern.exec(haystack)) !== null) {
+      checksum += match.index
     }
 
     durations.push(performance.now() - start)
