@@ -14,7 +14,7 @@
  * shared CI runners, other machines, and under background load.
  */
 import { execSync } from 'node:child_process'
-import { mkdtempSync, rmSync } from 'node:fs'
+import { mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { FACTOR, runComparison } from './compare.ts'
