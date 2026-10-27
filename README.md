@@ -76,7 +76,7 @@ Typographizer.typographize(str)
   })
 ```
 
-Typographizer uses a bunch of different methods under the hood. All of them can be called on their own — note that code segments are only skipped when using `typographize()`. For details, take a look at the API section below.
+Typographizer uses a bunch of different methods under the hood. All of them can be called on their own and skip code segments as well — with the exception of `trimWhitespace()`, which operates on the whole string by definition. For details, take a look at the API section below.
 
 ### Options
 

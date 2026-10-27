@@ -44,6 +44,18 @@ test('typographize handles documents that start or chain code segments', async (
   t.is(await Typographizer.typographize(trailing), 'Prose “here”.\n```js\nconst a = 1;\n```')
 })
 
+test('standalone methods also skip code segments', async (t) => {
+  const Typographizer = new TypographizerJS()
+
+  const str = 'Keep `this "quoted"...` intact and fix "that"...'
+  t.is(await Typographizer.formatQuotes(str), 'Keep `this "quoted"...` intact and fix “that”...')
+  t.is(await Typographizer.fixEllipsis(str), 'Keep `this "quoted"...` intact and fix "that"…')
+  t.is(await Typographizer.fixApostroph(str), 'Keep `this "quoted"...` intact and fix "that"...')
+
+  const html = '<p>Fix "this"…</p><code>skip "this"...</code>'
+  t.is(await Typographizer.formatQuotes(html), '<p>Fix “this”…</p><code>skip "this"...</code>')
+})
+
 test('typographize keeps its plain-string behavior when no code segments exist', async (t) => {
   const Typographizer = new TypographizerJS()
   const replaced = await Typographizer.typographize(html)
